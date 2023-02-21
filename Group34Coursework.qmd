@@ -1,0 +1,93 @@
+---
+title: "506CourseWork"
+format:
+  pdf:
+    toc: true
+editor: visual
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a
+finished document. To learn more about Quarto see <https://quarto.org>.
+
+## Running Code
+
+When you click the **Render** button a document will be generated that
+includes both content and the output of embedded code. You can embed
+code like this:
+
+
+```{r tidy=TRUE, tidy.opts=list(width.cutoff=72)}
+
+
+
+```
+
+
+
+```{r tidy=TRUE, tidy.opts=list(width.cutoff=72)}
+
+
+
+```
+
+```{r tidy=TRUE, tidy.opts=list(width.cutoff=72)}
+
+
+
+```
+
+```{r tidy=TRUE, tidy.opts=list(width.cutoff=72)}
+
+
+
+```
+
+```{r tidy=TRUE, tidy.opts=list(width.cutoff=72)}
+
+
+
+```
+
+```{r tidy=TRUE, tidy.opts=list(width.cutoff=72)}
+
+
+
+```
+
+```{r tidy=TRUE, tidy.opts=list(width.cutoff=72)}
+
+
+
+```
+
+```{r tidy=TRUE, tidy.opts=list(width.cutoff=72)}
+
+
+
+```
+
+```{r tidy=TRUE, tidy.opts=list(width.cutoff=72)}
+
+
+
+```
+
+```{r tidy=TRUE, tidy.opts=list(width.cutoff=72)}
+
+
+
+```
+
+```{r tidy=TRUE, tidy.opts=list(width.cutoff=72)}
+
+
+
+```
+
+```{r tidy=TRUE, tidy.opts=list(width.cutoff=72)}
+
+
+
+```
