@@ -1,0 +1,3 @@
+there is no originality points so just 2d plot is enough for full marks
+
+Its count data so a Poisson distribution is the most appropriate

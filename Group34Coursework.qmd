@@ -8,59 +8,73 @@ editor: visual
 
 This is Group 34 course work.
 
-## Quarto
 
-Quarto enables you to weave together content and executable code into a
-finished document. To learn more about Quarto see <https://quarto.org>.
 
-## Running Code
+```{r tidy=TRUE, tidy.opts=list(width.cutoff=72), echo=FALSE}
+# Loading packages
+library(fields)
+library(maps)
+library(sp)
+library(mgcv)
+library(ggplot2)
 
-When you click the **Render** button a document will be generated that
-includes both content and the output of embedded code. You can embed
-code like this:
+load("datasets_project.Rdata")
+
+# install.packages("DataExplorer")
+library(DataExplorer)
+
+```
+
 
 
 ```{r tidy=TRUE, tidy.opts=list(width.cutoff=72)}
-
+## PLotting map of cases
+plot.map(TBdata$TB[TBdata$Year==2014],n.levels=7,main="TB counts for 2014")
 
 
 ```
 
+## Exploratory analyses 
 
+```{r tidy=TRUE, tidy.opts=list(width.cutoff=72), echo=FALSE, eval=FALSE}
 
-```{r tidy=TRUE, tidy.opts=list(width.cutoff=72)}
+##plot(TBdata) looks terrible
 
-
-
-```
-
-```{r tidy=TRUE, tidy.opts=list(width.cutoff=72)}
-
-
+## this one is great but it becomes its own pdf so I will be using the individual functions from the package
+create_report(TBdata)
 
 ```
 
 ```{r tidy=TRUE, tidy.opts=list(width.cutoff=72)}
+plot_histogram(TBdata)
 
+```
+//TODO talk about the histograms and relevant distributions we can observe 
 
+Now investigating the correlation matrix of the numerical variables
+```{r tidy=TRUE, tidy.opts=list(width.cutoff=72)}
+
+plot_correlation(TBdata)
 
 ```
 
+As we can see from the matrix, the variable that is the most correlated from TB is the population, with illiteracy, poor sanitation and poverty having a negative correlation with TB.
+
+
+As the data is count data we will first fit a Poisson
 ```{r tidy=TRUE, tidy.opts=list(width.cutoff=72)}
 
-
+##Poisson data here
 
 ```
 
-```{r tidy=TRUE, tidy.opts=list(width.cutoff=72)}
+Apparently quasi poisson works best
 
-
-
-```
+Quasi-Poisson regression is used when the assumption of equal variance and mean of the Poisson distribution is violated, which often occurs when the data have over dispersion.
 
 ```{r tidy=TRUE, tidy.opts=list(width.cutoff=72)}
 
-
+##improving by extending to a quase Poisson
 
 ```
 
