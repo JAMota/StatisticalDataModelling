@@ -108,8 +108,9 @@ pch = 1, cex = 0.5)
 #Lets check our model residuals:
 qq.gam(poisson_model)
 ```
-The results are not good. Our qq-plot suggest that the quantiles in our data our not very similar to the line.
-Due to the current residuals 
+The results are terrible. Our qq-plot suggest that the quantiles in our data our not very similar to the line as it deviates from the line in nearly all the values.
+As such this suggests that our current model doesn't fit the data correctly and required another distribution.
+
 ## TODO better prepare the residuals and explain them if we have enough figures to show
 
 
@@ -134,22 +135,30 @@ nb_model <- gam(TB ~ offset(log(Population)) + s(Indigenous, k = 20) + s(Illiter
 summary(nb_model)
 ```
 
+## does it really make sense for us to have only 1 AIC since we are not comparing this result to any ohter result?
+
 ```{r}
 #Akaike Information Criterion
 nb_model$aic
 ```
+Now we will check the residuals to check for any anomalies on our model prediction
 
 ```{r}
 gam.check(nb_model)
 ```
+
+As we can see from the residual versus predictor plot, the values seem to be randomly scattered with no clear trend but with some distance from the zero line. As such we can determine that this scatter is due to random errors and not a unacounted patern in the model.
+
+##TODO double check this last claim with matthew
+
 
 ```{r}
 #checking the model residuals
 qq.gam(nb_model)
 ```
 
-The QQ-plot looks much better for the Negative Binomial model. The
-majority of points lie either on top of very near the y=x line, except
+The QQ-plot looks much better for the Negative Binomial model. 
+The majority of points lie either on top of very near the y=x line, except
 for a few towards the extremes. This indicates our assumption about the
 true distribution of the data is a lot more safe than it was before.
 
