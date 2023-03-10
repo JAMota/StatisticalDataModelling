@@ -108,13 +108,13 @@ pch = 1, cex = 0.5)
 #Lets check our model residuals:
 qq.gam(poisson_model)
 ```
-The results are terrible. Our qq-plot suggest that the quantiles in our data our not very similar to the line as it deviates from the line in nearly all the values.
-As such this suggests that our current model doesn't fit the data correctly and required another distribution.
+Our QQ-plot suggest that the quantiles in our data our not similar to the line as it deviates from the line in nearly all the values, showing a very flawed fit.
+As this suggests that our current model doesn't fit the data correctly and required an extension to our model as the Poisson GAM is not accounted for enough deviance as seen in the residuals.
 
 ## TODO better prepare the residuals and explain them if we have enough figures to show
 
-
-We will now use the Pearson estimate for the dispersion parameter, this method allow us to estimate the amount of extra variability, or over-dispersion in count data and therefore analyse if the Poisson distribution assumption of equal mean and variance holds.
+Since the model is not accounting for enough of the variance we will check if there is a significant difference between the variance and the mean. 
+In this analyses we will use the Pearson estimate for the dispersion parameter, this method allow us to estimate the amount of extra variability, or over-dispersion in count data and therefore analyse if the Poisson distribution assumption of equal mean and variance holds.
 
 ```{r}
 #Calculating Pearson estimate for dispersion parameter using Pearson residuals:
