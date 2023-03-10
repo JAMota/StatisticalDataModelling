@@ -17,6 +17,8 @@ library(maps)
 library(sp)
 library(mgcv)
 library(ggplot2)
+library(GGally)
+
 
 load("datasets_project.Rdata")
 
@@ -77,6 +79,109 @@ Quasi-Poisson regression is used when the assumption of equal variance and mean 
 ##improving by extending to a quase Poisson
 
 ```
+
+## TODO delete and let my nicer ones with the respetive explanation
+
+```{r, warning=FALSE, message = FALSE}
+# Set the figure size and margin
+options(repr.plot.width = 10, repr.plot.height = 8)
+
+# Select the variables of interest
+vars <- c("Indigenous", "Illiteracy", "Urbanisation", "Density", "Poverty", 
+          "Poor_Sanitation", "Unemployment", "Timeliness", "TB", "Population")
+
+# Create the scatterplot matrix
+ggpairs(TBdata[, vars])
+```
+
+## this is the Poisson definition
+
+```{r}
+poisson_model <- gam(TB ~ offset(log(Population)) + s(Indigenous, k = 20) + s(Illiteracy , k = 20) + s(Urbanisation, k = 20) + s(Density, k = 20) + s(Poverty, k = 20) + s(Poor_Sanitation, k = 20) + s(Unemployment, k = 20) + s(Timeliness, k = 20) + s(lat, k = 30) + s(lon, k = 30) + s(Year, k = 3) + ti(lon, lat, Year, k = 3), family = poisson, data = TBdata, method = 'REML')
+summary(poisson_model)
+```
+
+```{r}
+gam.check(poisson_model)
+```
+
+## Separate the plots the output is too messy
+
+```{r}
+#Akaike Information Criterion:
+poisson_model$aic
+
+plot(poisson_model, shade=T, rug = TRUE, residuals = TRUE,
+pch = 1, cex = 0.5)
+
+#Lets check our model residuals:
+qq.gam(poisson_model)
+```
+
+```{r}
+#The results are not good. Our qq-plot suggest that the quantiles in our data our not very similar to the line.
+#Calculating Pearson estimate for dispersion parameter using Pearson residuals:
+sum(residuals(poisson_model, type = "pearson")^2) / df.residual(poisson_model)
+
+#The dispersion parameter should be 1, so it seems that there is substantial overdispersion in the Poisson GAM.
+```
+
+## negatice binomial
+
+```{r}
+#fitting a negative-binomial model to our TB data:
+nb_model <- gam(TB ~ offset(log(Population)) + s(Indigenous, k = 20) + s(Illiteracy , k = 20) + s(Urbanisation, k = 20) + s(Density, k = 20) + s(Poverty, k = 20) + s(Poor_Sanitation, k = 20) + s(Unemployment, k = 20) + s(Timeliness, k = 20) + s(lat, k = 30) + s(lon, k = 30) + s(Year, k = 3) + ti(lon, lat, Year, k = 3), negbin(theta = 9, link = "log"), data = TBdata, method = 'REML')
+
+summary(nb_model)
+```
+
+```{r}
+#Akaike Information Criterion
+nb_model$aic
+```
+
+```{r}
+gam.check(nb_model)
+```
+
+```{r}
+#checking the model residuals
+qq.gam(nb_model)
+```
+
+The QQ-plot looks much better for the Negative Binomial model. The
+majority of points lie either on top of very near the y=x line, except
+for a few towards the extremes. This indicates our assumption about the
+true distribution of the data is a lot more safe than it was before.
+
+```{r}
+#Calculating Pearson estimate for dispersion parameter using Pearson residuals:
+sum(residuals(nb_model, type = "pearson")^2) / df.residual(nb_model)
+```
+
+The dispersion parameter is very close to 1 (1.133), unlike for the
+Poisson model.
+
+## Again tidy up the plots
+
+```{r}
+plot(nb_model, shade=T, rug = TRUE, residuals = TRUE,scheme=1,
+pch = 1, cex = 0.5)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ```{r tidy=TRUE, tidy.opts=list(width.cutoff=72)}
 
