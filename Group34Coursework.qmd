@@ -122,7 +122,7 @@ sum(residuals(poisson_model, type = "pearson")^2) / df.residual(poisson_model)
 
 #The dispersion parameter should be 1, so it seems that there is substantial over-dispersion in the Poisson GAM.
 ```
-As we can see from the The dispersion parameter should be 1 for the assumption of equal mean and variance to hold true, so it seems that there is substantial over-dispersion in the Poisson GAM. 
+As we can see from the dispersion parameter should be 1 for the assumption of equal mean and variance to hold true, so it seems that there is substantial over-dispersion in the Poisson GAM. 
 This violates one of the Poisson assumptions that the mean and variance are equal therefore we will have to extend the model from e GAM Poisson to a Negative Binomial GAM
 
 
@@ -167,8 +167,7 @@ true distribution of the data is a lot more safe than it was before.
 sum(residuals(nb_model, type = "pearson")^2) / df.residual(nb_model)
 ```
 
-The dispersion parameter is very close to 1 (1.133), unlike for the
-Poisson model.
+The dispersion parameter is very close to 1, unlike for the Poisson model,  meaning that the model that can  account for most of the over-dispersion in the data. As such a dispersion parameter value close to 1 can be interpreted as the model is a good fit for the data due to the model adequately capture the variability of the the response variable.
 
 ## Again tidy up the plots
 
