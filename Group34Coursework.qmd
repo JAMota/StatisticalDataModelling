@@ -1,16 +1,15 @@
 ---
-title: "506CourseWork"
+title: "Group 34 course work"
 format:
   pdf:
     toc: true
 editor: visual
 ---
 
-This is Group 34 course work.
+## TODO change format to docx to fix all the formating errors and the heatmap 
 
 
-
-```{r tidy=TRUE, tidy.opts=list(width.cutoff=72), echo=FALSE}
+```{r tidy=TRUE, tidy.opts=list(width.cutoff=72), echo=FALSE, output=FALSE}
 # Loading packages
 library(fields)
 library(maps)
@@ -54,47 +53,39 @@ plot_histogram(TBdata)
 //TODO talk about the histograms and relevant distributions we can observe 
 
 Now investigating the correlation matrix of the numerical variables
+
 ```{r tidy=TRUE, tidy.opts=list(width.cutoff=72)}
 
 plot_correlation(TBdata)
 
 ```
+## TODO manually fix this because render shrewds it to pieces
 
 As we can see from the matrix, the variable that is the most correlated from TB is the population, with illiteracy, poor sanitation and poverty having a negative correlation with TB.
 
 
-As the data is count data we will first fit a Poisson
-```{r tidy=TRUE, tidy.opts=list(width.cutoff=72)}
 
-##Poisson data here
+<!-- ```{r tidy=TRUE, tidy.opts=list(width.cutoff=72)} -->
 
-```
+<!-- ##Poisson data here -->
 
-Apparently quasi poisson works best
+<!-- ``` -->
 
-Quasi-Poisson regression is used when the assumption of equal variance and mean of the Poisson distribution is violated, which often occurs when the data have over dispersion.
+<!-- Apparently quasi poisson works best -->
 
-```{r tidy=TRUE, tidy.opts=list(width.cutoff=72)}
+<!-- Quasi-Poisson regression is used when the assumption of equal variance and mean of the Poisson distribution is violated, which often occurs when the data have over dispersion. -->
 
-##improving by extending to a quase Poisson
+<!-- ```{r tidy=TRUE, tidy.opts=list(width.cutoff=72)} -->
 
-```
+<!-- ##improving by extending to a quase Poisson -->
 
-## TODO delete and let my nicer ones with the respetive explanation
+<!-- ``` -->
 
-```{r, warning=FALSE, message = FALSE}
-# Set the figure size and margin
-options(repr.plot.width = 10, repr.plot.height = 8)
 
-# Select the variables of interest
-vars <- c("Indigenous", "Illiteracy", "Urbanisation", "Density", "Poverty", 
-          "Poor_Sanitation", "Unemployment", "Timeliness", "TB", "Population")
+## Poisson definition
 
-# Create the scatterplot matrix
-ggpairs(TBdata[, vars])
-```
+As the data is count data we will first fit a Poisson module since this distribution is a good fit for the nature of the data
 
-## this is the Poisson definition
 
 ```{r}
 poisson_model <- gam(TB ~ offset(log(Population)) + s(Indigenous, k = 20) + s(Illiteracy , k = 20) + s(Urbanisation, k = 20) + s(Density, k = 20) + s(Poverty, k = 20) + s(Poor_Sanitation, k = 20) + s(Unemployment, k = 20) + s(Timeliness, k = 20) + s(lat, k = 30) + s(lon, k = 30) + s(Year, k = 3) + ti(lon, lat, Year, k = 3), family = poisson, data = TBdata, method = 'REML')
@@ -117,16 +108,24 @@ pch = 1, cex = 0.5)
 #Lets check our model residuals:
 qq.gam(poisson_model)
 ```
+The results are not good. Our qq-plot suggest that the quantiles in our data our not very similar to the line.
+Due to the current residuals 
+## TODO better prepare the residuals and explain them if we have enough figures to show
+
+
+We will now use the Pearson estimate for the dispersion parameter, this method allow us to estimate the amount of extra variability, or over-dispersion in count data and therefore analyse if the Poisson distribution assumption of equal mean and variance holds.
 
 ```{r}
-#The results are not good. Our qq-plot suggest that the quantiles in our data our not very similar to the line.
 #Calculating Pearson estimate for dispersion parameter using Pearson residuals:
 sum(residuals(poisson_model, type = "pearson")^2) / df.residual(poisson_model)
 
-#The dispersion parameter should be 1, so it seems that there is substantial overdispersion in the Poisson GAM.
+#The dispersion parameter should be 1, so it seems that there is substantial over-dispersion in the Poisson GAM.
 ```
+As we can see from the The dispersion parameter should be 1 for the assumption of equal mean and variance to hold true, so it seems that there is substantial over-dispersion in the Poisson GAM. 
+This violates one of the Poisson assumptions that the mean and variance are equal therefore we will have to extend the model from e GAM Poisson to a Negative Binomial GAM
 
-## negatice binomial
+
+## Negatice binomial
 
 ```{r}
 #fitting a negative-binomial model to our TB data:
