@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.240">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Group 34 course work</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="Group34Coursework_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Group34Coursework_files/libs/quarto-html/quarto.js"></script>
+<script src="Group34Coursework_files/libs/quarto-html/popper.min.js"></script>
+<script src="Group34Coursework_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Group34Coursework_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Group34Coursework_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Group34Coursework_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Group34Coursework_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Group34Coursework_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Group34Coursework_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#report" id="toc-report" class="nav-link active" data-scroll-target="#report">Report</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction:</a></li>
+  <li><a href="#exploratory-data-analysis" id="toc-exploratory-data-analysis" class="nav-link" data-scroll-target="#exploratory-data-analysis">Exploratory Data Analysis:</a></li>
+  <li><a href="#model-selection" id="toc-model-selection" class="nav-link" data-scroll-target="#model-selection">Model Selection:</a></li>
+  <li><a href="#model-fitting" id="toc-model-fitting" class="nav-link" data-scroll-target="#model-fitting">Model Fitting:</a></li>
+  <li><a href="#model-evaluation" id="toc-model-evaluation" class="nav-link" data-scroll-target="#model-evaluation">Model Evaluation:</a></li>
+  <li><a href="#results-and-interpretation" id="toc-results-and-interpretation" class="nav-link" data-scroll-target="#results-and-interpretation">Results and Interpretation:</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion:</a></li>
+  <li><a href="#apendix" id="toc-apendix" class="nav-link" data-scroll-target="#apendix">Apendix</a></li>
+  <li><a href="#todo-change-format-to-docx-to-fix-all-the-formating-errors-and-the-heatmap" id="toc-todo-change-format-to-docx-to-fix-all-the-formating-errors-and-the-heatmap" class="nav-link" data-scroll-target="#todo-change-format-to-docx-to-fix-all-the-formating-errors-and-the-heatmap">TODO change format to docx to fix all the formating errors and the heatmap</a></li>
+  <li><a href="#exploratory-analyses" id="toc-exploratory-analyses" class="nav-link" data-scroll-target="#exploratory-analyses">Exploratory analyses</a></li>
+  <li><a href="#poisson-definition" id="toc-poisson-definition" class="nav-link" data-scroll-target="#poisson-definition">Poisson definition</a></li>
+  <li><a href="#separate-the-plots-the-output-is-too-messy" id="toc-separate-the-plots-the-output-is-too-messy" class="nav-link" data-scroll-target="#separate-the-plots-the-output-is-too-messy">Separate the plots the output is too messy</a></li>
+  <li><a href="#todo-better-prepare-the-residuals-and-explain-them-if-we-have-enough-figures-to-show" id="toc-todo-better-prepare-the-residuals-and-explain-them-if-we-have-enough-figures-to-show" class="nav-link" data-scroll-target="#todo-better-prepare-the-residuals-and-explain-them-if-we-have-enough-figures-to-show">TODO better prepare the residuals and explain them if we have enough figures to show</a></li>
+  <li><a href="#negatice-binomial" id="toc-negatice-binomial" class="nav-link" data-scroll-target="#negatice-binomial">Negatice binomial</a></li>
+  <li><a href="#again-tidy-up-the-plots-of-the-negative-binomial" id="toc-again-tidy-up-the-plots-of-the-negative-binomial" class="nav-link" data-scroll-target="#again-tidy-up-the-plots-of-the-negative-binomial">Again tidy up the plots of the Negative Binomial</a></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Group 34 course work</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="report" class="level2">
+<h2 class="anchored" data-anchor-id="report">Report</h2>
+<p>Notes: no more than six figures and/or three tables • [15 marks] Understanding and exploration of both the problem and the data. • [10 marks] Thoroughness and rigour, e.g.&nbsp;clear mathematical description of models. • [25 marks] Clear exposition of the steps you took in model fitting and exposition of a final model. • [20 marks] Clear presentation and interpretation of results. • [10 marks] Critical review of the analysis. • [20 marks] Clarity and conciseness in writing and tidy presentation of R code and associated plots.</p>
+</section>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction:</h2>
+<pre><code>Briefly describe the Tuberculosis disease and the significance of understanding the factors that affect its spread.
+Explain why a GAM is an appropriate modeling technique for this problem.</code></pre>
+</section>
+<section id="exploratory-data-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="exploratory-data-analysis">Exploratory Data Analysis:</h2>
+<pre><code>Provide a summary of the Tuberculosis dataset, including descriptive statistics and visualizations.
+Identify any patterns or trends in the data, such as geographical or temporal clusters of cases.
+Discuss any issues with the data, such as outliers or inconsistencies.</code></pre>
+</section>
+<section id="model-selection" class="level2">
+<h2 class="anchored" data-anchor-id="model-selection">Model Selection:</h2>
+<pre><code>Explain the process used to select the variables to include in the GAM model.
+Discuss any variable transformations or interactions that were considered.
+Discuss any model assumptions that were evaluated, such as the normality of the residuals, the linearity of the predictor variables, and the spatial and temporal autocorrelation.</code></pre>
+</section>
+<section id="model-fitting" class="level2">
+<h2 class="anchored" data-anchor-id="model-fitting">Model Fitting:</h2>
+<pre><code>Explain the process used to fit the GAM model, such as the choice of smoothing functions, the type of penalty used, and the optimization algorithm used to estimate the parameters.
+Describe the hyperparameters used, such as the degree of smoothing or the type of penalty used.</code></pre>
+</section>
+<section id="model-evaluation" class="level2">
+<h2 class="anchored" data-anchor-id="model-evaluation">Model Evaluation:</h2>
+<pre><code>Provide a summary of the goodness-of-fit measures used to evaluate the model, such as the explained variance, the deviance, and the residual analysis.
+Discuss any limitations or assumptions of the GAM model, such as the potential for overfitting or the sensitivity to the choice of smoothing parameters.
+Compare the GAM model to other models that were considered, such as a generalized linear model(GLM).</code></pre>
+</section>
+<section id="results-and-interpretation" class="level2">
+<h2 class="anchored" data-anchor-id="results-and-interpretation">Results and Interpretation:</h2>
+<pre><code>Present the results of the GAM model, including the coefficients and their confidence intervals.
+Interpret the coefficients and their practical significance.
+Provide visualizations of the model predictions and any interactions or nonlinear relationships.</code></pre>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion:</h2>
+<pre><code>Summarize the findings of the GAM model.</code></pre>
+</section>
+<section id="apendix" class="level2">
+<h2 class="anchored" data-anchor-id="apendix">Apendix</h2>
+</section>
+<section id="todo-change-format-to-docx-to-fix-all-the-formating-errors-and-the-heatmap" class="level2">
+<h2 class="anchored" data-anchor-id="todo-change-format-to-docx-to-fix-all-the-formating-errors-and-the-heatmap">TODO change format to docx to fix all the formating errors and the heatmap</h2>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="do">## PLotting map of cases</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.map</span>(TBdata<span class="sc">$</span>TB[TBdata<span class="sc">$</span>Year <span class="sc">==</span> <span class="dv">2014</span>], <span class="at">n.levels =</span> <span class="dv">7</span>, <span class="at">main =</span> <span class="st">"TB counts for 2014"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="exploratory-analyses" class="level2">
+<h2 class="anchored" data-anchor-id="exploratory-analyses">Exploratory analyses</h2>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_histogram</span>(TBdata)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>//TODO talk about the histograms and relevant distributions we can observe</p>
+<p>Now investigating the correlation matrix of the numerical variables</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_correlation</span>(TBdata)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>As we can see from the matrix, the variable that is the most correlated from TB is the population, with illiteracy, poor sanitation and poverty having a negative correlation with TB.</p>
+</section>
+<section id="poisson-definition" class="level2">
+<h2 class="anchored" data-anchor-id="poisson-definition">Poisson definition</h2>
+<p>As the data is count data we will first fit a Poisson module since this distribution is a good fit for the nature of the data</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>poisson_model <span class="ot">&lt;-</span> <span class="fu">gam</span>(TB <span class="sc">~</span> <span class="fu">offset</span>(<span class="fu">log</span>(Population)) <span class="sc">+</span> <span class="fu">s</span>(Indigenous, <span class="at">k =</span> <span class="dv">20</span>) <span class="sc">+</span> <span class="fu">s</span>(Illiteracy , <span class="at">k =</span> <span class="dv">20</span>) <span class="sc">+</span> <span class="fu">s</span>(Urbanisation, <span class="at">k =</span> <span class="dv">20</span>) <span class="sc">+</span> <span class="fu">s</span>(Density, <span class="at">k =</span> <span class="dv">20</span>) <span class="sc">+</span> <span class="fu">s</span>(Poverty, <span class="at">k =</span> <span class="dv">20</span>) <span class="sc">+</span> <span class="fu">s</span>(Poor_Sanitation, <span class="at">k =</span> <span class="dv">20</span>) <span class="sc">+</span> <span class="fu">s</span>(Unemployment, <span class="at">k =</span> <span class="dv">20</span>) <span class="sc">+</span> <span class="fu">s</span>(Timeliness, <span class="at">k =</span> <span class="dv">20</span>) <span class="sc">+</span> <span class="fu">s</span>(lat, <span class="at">k =</span> <span class="dv">30</span>) <span class="sc">+</span> <span class="fu">s</span>(lon, <span class="at">k =</span> <span class="dv">30</span>) <span class="sc">+</span> <span class="fu">s</span>(Year, <span class="at">k =</span> <span class="dv">3</span>) <span class="sc">+</span> <span class="fu">ti</span>(lon, lat, Year, <span class="at">k =</span> <span class="dv">3</span>), <span class="at">family =</span> poisson, <span class="at">data =</span> TBdata, <span class="at">method =</span> <span class="st">'REML'</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(poisson_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Family: poisson 
+Link function: log 
+
+Formula:
+TB ~ offset(log(Population)) + s(Indigenous, k = 20) + s(Illiteracy, 
+    k = 20) + s(Urbanisation, k = 20) + s(Density, k = 20) + 
+    s(Poverty, k = 20) + s(Poor_Sanitation, k = 20) + s(Unemployment, 
+    k = 20) + s(Timeliness, k = 20) + s(lat, k = 30) + s(lon, 
+    k = 30) + s(Year, k = 3) + ti(lon, lat, Year, k = 3)
+
+Parametric coefficients:
+             Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept) -8.480233   0.004557   -1861   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Approximate significance of smooth terms:
+                      edf Ref.df  Chi.sq p-value    
+s(Indigenous)      18.443 18.925  649.18 &lt; 2e-16 ***
+s(Illiteracy)      18.262 18.907  439.58 &lt; 2e-16 ***
+s(Urbanisation)    18.888 18.991  741.26 &lt; 2e-16 ***
+s(Density)         17.130 17.913  525.38 &lt; 2e-16 ***
+s(Poverty)         18.502 18.917 1176.23 &lt; 2e-16 ***
+s(Poor_Sanitation) 17.517 18.656  858.89 &lt; 2e-16 ***
+s(Unemployment)    18.475 18.944 1450.40 &lt; 2e-16 ***
+s(Timeliness)      18.159 18.868  911.93 &lt; 2e-16 ***
+s(lat)             28.310 28.939 2406.85 &lt; 2e-16 ***
+s(lon)             28.447 28.951 2601.82 &lt; 2e-16 ***
+s(Year)             1.847  1.962   46.82 &lt; 2e-16 ***
+ti(lon,lat,Year)    3.913  5.017   16.61 0.00535 ** 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+R-sq.(adj) =  0.997   Deviance explained = 87.9%
+-REML = 9825.5  Scale est. = 1         n = 1671</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gam.check</span>(poisson_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="separate-the-plots-the-output-is-too-messy" class="level2">
+<h2 class="anchored" data-anchor-id="separate-the-plots-the-output-is-too-messy">Separate the plots the output is too messy</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Akaike Information Criterion:</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>poisson_model<span class="sc">$</span>aic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 18585.52</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(poisson_model, <span class="at">shade=</span>T, <span class="at">rug =</span> <span class="cn">TRUE</span>, <span class="at">residuals =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="at">pch =</span> <span class="dv">1</span>, <span class="at">cex =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-8-3.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-8-4.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-8-5.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-8-6.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-8-7.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-8-8.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-8-9.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-8-10.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-8-11.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-8-12.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Lets check our model residuals:</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qq.gam</span>(poisson_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-8-13.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Our QQ-plot suggest that the quantiles in our data our not similar to the line as it deviates from the line in nearly all the values, showing a very flawed fit. As this suggests that our current model doesn’t fit the data correctly and required an extension to our model as the Poisson GAM is not accounted for enough deviance as seen in the residuals.</p>
+</section>
+<section id="todo-better-prepare-the-residuals-and-explain-them-if-we-have-enough-figures-to-show" class="level2">
+<h2 class="anchored" data-anchor-id="todo-better-prepare-the-residuals-and-explain-them-if-we-have-enough-figures-to-show">TODO better prepare the residuals and explain them if we have enough figures to show</h2>
+<p>Since the model is not accounting for enough of the variance we will check if there is a significant difference between the variance and the mean. In this analyses we will use the Pearson estimate for the dispersion parameter, this method allow us to estimate the amount of extra variability, or over-dispersion in count data and therefore analyse if the Poisson distribution assumption of equal mean and variance holds.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Calculating Pearson estimate for dispersion parameter using Pearson residuals:</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">residuals</span>(poisson_model, <span class="at">type =</span> <span class="st">"pearson"</span>)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> <span class="fu">df.residual</span>(poisson_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6.67687</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#The dispersion parameter should be 1, so it seems that there is substantial over-dispersion in the Poisson GAM.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>As we can see from the dispersion parameter should be 1 for the assumption of equal mean and variance to hold true, so it seems that there is substantial over-dispersion in the Poisson GAM. This violates one of the Poisson assumptions that the mean and variance are equal therefore we will have to extend the model from e GAM Poisson to a Negative Binomial GAM</p>
+</section>
+<section id="negatice-binomial" class="level2">
+<h2 class="anchored" data-anchor-id="negatice-binomial">Negatice binomial</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#fitting a negative-binomial model to our TB data:</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>nb_model <span class="ot">&lt;-</span> <span class="fu">gam</span>(TB <span class="sc">~</span> <span class="fu">offset</span>(<span class="fu">log</span>(Population)) <span class="sc">+</span> <span class="fu">s</span>(Indigenous, <span class="at">k =</span> <span class="dv">20</span>) <span class="sc">+</span> <span class="fu">s</span>(Illiteracy , <span class="at">k =</span> <span class="dv">20</span>) <span class="sc">+</span> <span class="fu">s</span>(Urbanisation, <span class="at">k =</span> <span class="dv">20</span>) <span class="sc">+</span> <span class="fu">s</span>(Density, <span class="at">k =</span> <span class="dv">20</span>) <span class="sc">+</span> <span class="fu">s</span>(Poverty, <span class="at">k =</span> <span class="dv">20</span>) <span class="sc">+</span> <span class="fu">s</span>(Poor_Sanitation, <span class="at">k =</span> <span class="dv">20</span>) <span class="sc">+</span> <span class="fu">s</span>(Unemployment, <span class="at">k =</span> <span class="dv">20</span>) <span class="sc">+</span> <span class="fu">s</span>(Timeliness, <span class="at">k =</span> <span class="dv">20</span>) <span class="sc">+</span> <span class="fu">s</span>(lat, <span class="at">k =</span> <span class="dv">30</span>) <span class="sc">+</span> <span class="fu">s</span>(lon, <span class="at">k =</span> <span class="dv">30</span>) <span class="sc">+</span> <span class="fu">s</span>(Year, <span class="at">k =</span> <span class="dv">3</span>) <span class="sc">+</span> <span class="fu">ti</span>(lon, lat, Year, <span class="at">k =</span> <span class="dv">3</span>), <span class="fu">negbin</span>(<span class="at">theta =</span> <span class="dv">9</span>, <span class="at">link =</span> <span class="st">"log"</span>), <span class="at">data =</span> TBdata, <span class="at">method =</span> <span class="st">'REML'</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(nb_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Family: Negative Binomial(9) 
+Link function: log 
+
+Formula:
+TB ~ offset(log(Population)) + s(Indigenous, k = 20) + s(Illiteracy, 
+    k = 20) + s(Urbanisation, k = 20) + s(Density, k = 20) + 
+    s(Poverty, k = 20) + s(Poor_Sanitation, k = 20) + s(Unemployment, 
+    k = 20) + s(Timeliness, k = 20) + s(lat, k = 30) + s(lon, 
+    k = 30) + s(Year, k = 3) + ti(lon, lat, Year, k = 3)
+
+Parametric coefficients:
+             Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept) -8.451092   0.009451  -894.2   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Approximate significance of smooth terms:
+                      edf Ref.df  Chi.sq  p-value    
+s(Indigenous)       2.875  3.451  18.887 0.000643 ***
+s(Illiteracy)       4.772  6.034  11.091 0.079313 .  
+s(Urbanisation)     6.599  8.228  33.224 8.79e-05 ***
+s(Density)          6.942  8.637 103.826  &lt; 2e-16 ***
+s(Poverty)          2.028  2.608   1.074 0.652302    
+s(Poor_Sanitation)  8.696 10.680  70.808  &lt; 2e-16 ***
+s(Unemployment)     5.532  6.935  92.111  &lt; 2e-16 ***
+s(Timeliness)       4.764  5.967  79.993  &lt; 2e-16 ***
+s(lat)             21.577 25.088 190.344  &lt; 2e-16 ***
+s(lon)             19.462 23.059 239.215  &lt; 2e-16 ***
+s(Year)             1.400  1.636   1.888 0.207855    
+ti(lon,lat,Year)    1.363  1.592   0.819 0.681850    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+R-sq.(adj) =  0.883   Deviance explained = 58.1%
+-REML = 7113.6  Scale est. = 1         n = 1671</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Akaike Information Criterion</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>nb_model<span class="sc">$</span>aic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 14015.77</code></pre>
+</div>
+</div>
+<p>As we can see from this Akaike Information Criterion(AIC) the Negative Binomial has a significantly lower value than the previous 18585,52 from the GAM Poisson, meaning this is already a better fitting model than the previous one.</p>
+<p>Now we will check the residuals to check for any anomalies on our model prediction</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gam.check</span>(nb_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Method: REML   Optimizer: outer newton
+full convergence after 7 iterations.
+Gradient range [-0.0008538501,2.782458e-05]
+(score 7113.619 &amp; scale 1).
+Hessian positive definite, eigenvalue range [0.0001209016,3.084703].
+Model rank =  221 / 221 
+
+Basis dimension (k) checking results. Low p-value (k-index&lt;1) may
+indicate that k is too low, especially if edf is close to k'.
+
+                      k'   edf k-index p-value    
+s(Indigenous)      19.00  2.87    0.54  &lt;2e-16 ***
+s(Illiteracy)      19.00  4.77    0.53  &lt;2e-16 ***
+s(Urbanisation)    19.00  6.60    0.54  &lt;2e-16 ***
+s(Density)         19.00  6.94    0.54  &lt;2e-16 ***
+s(Poverty)         19.00  2.03    0.54  &lt;2e-16 ***
+s(Poor_Sanitation) 19.00  8.70    0.53  &lt;2e-16 ***
+s(Unemployment)    19.00  5.53    0.53  &lt;2e-16 ***
+s(Timeliness)      19.00  4.76    0.60  &lt;2e-16 ***
+s(lat)             29.00 21.58    0.54  &lt;2e-16 ***
+s(lon)             29.00 19.46    0.56  &lt;2e-16 ***
+s(Year)             2.00  1.40    0.79  &lt;2e-16 ***
+ti(lon,lat,Year)    8.00  1.36    0.94    0.02 *  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>As we can see from the residual versus predictor plot, the values seem to be randomly scattered with no clear trend but with some distance from the zero line. As such we can determine that this scatter is due to random errors and not a unacounted patern in the model.</p>
+<p>##TODO double check this last claim with matthew</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">#checking the model residuals</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qq.gam</span>(nb_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The QQ-plot looks much better for the Negative Binomial model. The majority of points lie either on top of very near the y=x line, except for a few towards the extremes. This indicates our assumption about the true distribution of the data is a lot more safe than it was before.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Calculating Pearson estimate for dispersion parameter using Pearson residuals:</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">residuals</span>(nb_model, <span class="at">type =</span> <span class="st">"pearson"</span>)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> <span class="fu">df.residual</span>(nb_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.190792</code></pre>
+</div>
+</div>
+<p>The dispersion parameter is very close to 1, unlike for the Poisson model, meaning that the model that can account for most of the over-dispersion in the data. As such a dispersion parameter value close to 1 can be interpreted as the model is a good fit for the data due to the model adequately capture the variability of the the response variable.</p>
+</section>
+<section id="again-tidy-up-the-plots-of-the-negative-binomial" class="level2">
+<h2 class="anchored" data-anchor-id="again-tidy-up-the-plots-of-the-negative-binomial">Again tidy up the plots of the Negative Binomial</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(nb_model, <span class="at">shade=</span>T, <span class="at">rug =</span> <span class="cn">TRUE</span>, <span class="at">residuals =</span> <span class="cn">TRUE</span>,<span class="at">scheme=</span><span class="dv">1</span>,</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="at">pch =</span> <span class="dv">1</span>, <span class="at">cex =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-15-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-15-3.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-15-4.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-15-5.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-15-6.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-15-7.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-15-8.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-15-9.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-15-10.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-15-11.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-15-12.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

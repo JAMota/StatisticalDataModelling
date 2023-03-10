@@ -1,13 +1,73 @@
 ---
 title: "Group 34 course work"
 format:
-  pdf:
+  html:
     toc: true
 editor: visual
 ---
 
-## TODO change format to docx to fix all the formating errors and the heatmap 
+## Report
 
+Notes: no more than six figures and/or three tables • \[15 marks\]
+Understanding and exploration of both the problem and the data. • \[10
+marks\] Thoroughness and rigour, e.g. clear mathematical description of
+models. • \[25 marks\] Clear exposition of the steps you took in model
+fitting and exposition of a final model. • \[20 marks\] Clear
+presentation and interpretation of results. • \[10 marks\] Critical
+review of the analysis. • \[20 marks\] Clarity and conciseness in
+writing and tidy presentation of R code and associated plots.
+
+## Introduction:
+
+    Briefly describe the Tuberculosis disease and the significance of understanding the factors that affect its spread.
+    Explain why a GAM is an appropriate modeling technique for this problem.
+
+Tuberculosis (TB) is a bacterial disease caused by the bacterium
+Mycobacterium tuberculosis. It primarily affects the lungs, but can also
+affect other parts of the body, such as the kidneys, spine, and brain.
+
+In Brazil, TB is a major public health problem, with an best guest of 96000  TB
+incident and ratio of 46 per 100000 reported in 2019.
+
+references
+https://apps.who.int/iris/bitstream/handle/10665/336069/9789240013131-eng.pdf page 32
+
+## Exploratory Data Analysis:
+
+    Provide a summary of the Tuberculosis dataset, including descriptive statistics and visualizations.
+    Identify any patterns or trends in the data, such as geographical or temporal clusters of cases.
+    Discuss any issues with the data, such as outliers or inconsistencies.
+
+## Model Selection:
+
+    Explain the process used to select the variables to include in the GAM model.
+    Discuss any variable transformations or interactions that were considered.
+    Discuss any model assumptions that were evaluated, such as the normality of the residuals, the linearity of the predictor variables, and the spatial and temporal autocorrelation.
+
+## Model Fitting:
+
+    Explain the process used to fit the GAM model, such as the choice of smoothing functions, the type of penalty used, and the optimization algorithm used to estimate the parameters.
+    Describe the hyperparameters used, such as the degree of smoothing or the type of penalty used.
+
+## Model Evaluation:
+
+    Provide a summary of the goodness-of-fit measures used to evaluate the model, such as the explained variance, the deviance, and the residual analysis.
+    Discuss any limitations or assumptions of the GAM model, such as the potential for overfitting or the sensitivity to the choice of smoothing parameters.
+    Compare the GAM model to other models that were considered, such as a generalized linear model(GLM).
+
+## Results and Interpretation:
+
+    Present the results of the GAM model, including the coefficients and their confidence intervals.
+    Interpret the coefficients and their practical significance.
+    Provide visualizations of the model predictions and any interactions or nonlinear relationships.
+
+## Conclusion:
+
+    Summarize the findings of the GAM model.
+
+## Apendix
+
+## TODO change format to docx to fix all the formating errors and the heatmap
 
 ```{r tidy=TRUE, tidy.opts=list(width.cutoff=72), echo=FALSE, output=FALSE}
 # Loading packages
@@ -26,8 +86,6 @@ library(DataExplorer)
 
 ```
 
-
-
 ```{r tidy=TRUE, tidy.opts=list(width.cutoff=72)}
 ## PLotting map of cases
 plot.map(TBdata$TB[TBdata$Year==2014],n.levels=7,main="TB counts for 2014")
@@ -35,7 +93,7 @@ plot.map(TBdata$TB[TBdata$Year==2014],n.levels=7,main="TB counts for 2014")
 
 ```
 
-## Exploratory analyses 
+## Exploratory analyses
 
 ```{r tidy=TRUE, tidy.opts=list(width.cutoff=72), echo=FALSE, eval=FALSE}
 
@@ -50,7 +108,9 @@ create_report(TBdata)
 plot_histogram(TBdata)
 
 ```
-//TODO talk about the histograms and relevant distributions we can observe 
+
+//TODO talk about the histograms and relevant distributions we can
+observe
 
 Now investigating the correlation matrix of the numerical variables
 
@@ -59,40 +119,22 @@ Now investigating the correlation matrix of the numerical variables
 plot_correlation(TBdata)
 
 ```
-## TODO manually fix this because render shrewds it to pieces
 
-As we can see from the matrix, the variable that is the most correlated from TB is the population, with illiteracy, poor sanitation and poverty having a negative correlation with TB.
-
-
-
-<!-- ```{r tidy=TRUE, tidy.opts=list(width.cutoff=72)} -->
-
-<!-- ##Poisson data here -->
-
-<!-- ``` -->
-
-<!-- Apparently quasi poisson works best -->
-
-<!-- Quasi-Poisson regression is used when the assumption of equal variance and mean of the Poisson distribution is violated, which often occurs when the data have over dispersion. -->
-
-<!-- ```{r tidy=TRUE, tidy.opts=list(width.cutoff=72)} -->
-
-<!-- ##improving by extending to a quase Poisson -->
-
-<!-- ``` -->
-
+As we can see from the matrix, the variable that is the most correlated
+from TB is the population, with illiteracy, poor sanitation and poverty
+having a negative correlation with TB.
 
 ## Poisson definition
 
-As the data is count data we will first fit a Poisson module since this distribution is a good fit for the nature of the data
-
+As the data is count data we will first fit a Poisson module since this
+distribution is a good fit for the nature of the data
 
 ```{r}
 poisson_model <- gam(TB ~ offset(log(Population)) + s(Indigenous, k = 20) + s(Illiteracy , k = 20) + s(Urbanisation, k = 20) + s(Density, k = 20) + s(Poverty, k = 20) + s(Poor_Sanitation, k = 20) + s(Unemployment, k = 20) + s(Timeliness, k = 20) + s(lat, k = 30) + s(lon, k = 30) + s(Year, k = 3) + ti(lon, lat, Year, k = 3), family = poisson, data = TBdata, method = 'REML')
 summary(poisson_model)
 ```
 
-```{r}
+```{r, eval=FALSE}
 gam.check(poisson_model)
 ```
 
@@ -108,13 +150,22 @@ pch = 1, cex = 0.5)
 #Lets check our model residuals:
 qq.gam(poisson_model)
 ```
-Our QQ-plot suggest that the quantiles in our data our not similar to the line as it deviates from the line in nearly all the values, showing a very flawed fit.
-As this suggests that our current model doesn't fit the data correctly and required an extension to our model as the Poisson GAM is not accounted for enough deviance as seen in the residuals.
+
+Our QQ-plot suggest that the quantiles in our data our not similar to
+the line as it deviates from the line in nearly all the values, showing
+a very flawed fit. As this suggests that our current model doesn't fit
+the data correctly and required an extension to our model as the Poisson
+GAM is not accounted for enough deviance as seen in the residuals.
 
 ## TODO better prepare the residuals and explain them if we have enough figures to show
 
-Since the model is not accounting for enough of the variance we will check if there is a significant difference between the variance and the mean. 
-In this analyses we will use the Pearson estimate for the dispersion parameter, this method allow us to estimate the amount of extra variability, or over-dispersion in count data and therefore analyse if the Poisson distribution assumption of equal mean and variance holds.
+Since the model is not accounting for enough of the variance we will
+check if there is a significant difference between the variance and the
+mean. In this analyses we will use the Pearson estimate for the
+dispersion parameter, this method allow us to estimate the amount of
+extra variability, or over-dispersion in count data and therefore
+analyse if the Poisson distribution assumption of equal mean and
+variance holds.
 
 ```{r}
 #Calculating Pearson estimate for dispersion parameter using Pearson residuals:
@@ -122,9 +173,13 @@ sum(residuals(poisson_model, type = "pearson")^2) / df.residual(poisson_model)
 
 #The dispersion parameter should be 1, so it seems that there is substantial over-dispersion in the Poisson GAM.
 ```
-As we can see from the dispersion parameter should be 1 for the assumption of equal mean and variance to hold true, so it seems that there is substantial over-dispersion in the Poisson GAM. 
-This violates one of the Poisson assumptions that the mean and variance are equal therefore we will have to extend the model from e GAM Poisson to a Negative Binomial GAM
 
+As we can see from the dispersion parameter should be 1 for the
+assumption of equal mean and variance to hold true, so it seems that
+there is substantial over-dispersion in the Poisson GAM. This violates
+one of the Poisson assumptions that the mean and variance are equal
+therefore we will have to extend the model from e GAM Poisson to a
+Negative Binomial GAM
 
 ## Negatice binomial
 
@@ -135,30 +190,37 @@ nb_model <- gam(TB ~ offset(log(Population)) + s(Indigenous, k = 20) + s(Illiter
 summary(nb_model)
 ```
 
-## does it really make sense for us to have only 1 AIC since we are not comparing this result to any ohter result?
-
 ```{r}
 #Akaike Information Criterion
 nb_model$aic
 ```
-Now we will check the residuals to check for any anomalies on our model prediction
+
+As we can see from this Akaike Information Criterion(AIC) the Negative
+Binomial has a significantly lower value than the previous 18585,52 from
+the GAM Poisson, meaning this is already a better fitting model than the
+previous one.
+
+Now we will check the residuals to check for any anomalies on our model
+prediction
 
 ```{r}
 gam.check(nb_model)
 ```
 
-As we can see from the residual versus predictor plot, the values seem to be randomly scattered with no clear trend but with some distance from the zero line. As such we can determine that this scatter is due to random errors and not a unacounted patern in the model.
+As we can see from the residual versus predictor plot, the values seem
+to be randomly scattered with no clear trend but with some distance from
+the zero line. As such we can determine that this scatter is due to
+random errors and not a unacounted patern in the model.
 
 ##TODO double check this last claim with matthew
-
 
 ```{r}
 #checking the model residuals
 qq.gam(nb_model)
 ```
 
-The QQ-plot looks much better for the Negative Binomial model. 
-The majority of points lie either on top of very near the y=x line, except
+The QQ-plot looks much better for the Negative Binomial model. The
+majority of points lie either on top of very near the y=x line, except
 for a few towards the extremes. This indicates our assumption about the
 true distribution of the data is a lot more safe than it was before.
 
@@ -167,28 +229,19 @@ true distribution of the data is a lot more safe than it was before.
 sum(residuals(nb_model, type = "pearson")^2) / df.residual(nb_model)
 ```
 
-The dispersion parameter is very close to 1, unlike for the Poisson model,  meaning that the model that can  account for most of the over-dispersion in the data. As such a dispersion parameter value close to 1 can be interpreted as the model is a good fit for the data due to the model adequately capture the variability of the the response variable.
+The dispersion parameter is very close to 1, unlike for the Poisson
+model, meaning that the model that can account for most of the
+over-dispersion in the data. As such a dispersion parameter value close
+to 1 can be interpreted as the model is a good fit for the data due to
+the model adequately capture the variability of the the response
+variable.
 
-## Again tidy up the plots
+## Again tidy up the plots of the Negative Binomial
 
 ```{r}
 plot(nb_model, shade=T, rug = TRUE, residuals = TRUE,scheme=1,
 pch = 1, cex = 0.5)
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ```{r tidy=TRUE, tidy.opts=list(width.cutoff=72)}
 
