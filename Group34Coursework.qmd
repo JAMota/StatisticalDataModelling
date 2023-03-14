@@ -4,6 +4,8 @@ format:
   html:
     toc: true
 editor: visual
+bibliography: references.bib
+bibio-style: unsrt
 ---
 
 ## Report
@@ -27,16 +29,36 @@ Mycobacterium tuberculosis. It primarily affects the lungs, but can also
 affect other parts of the body, such as the kidneys, spine, and brain.
 
 In Brazil, TB is a major public health problem, with an best guest of 96000  TB
-incident and ratio of 46 per 100000 reported in 2019.
+incident and ratio of 46 per 100000 reported in 2020 @who_tb_2020.
 
-references
-https://apps.who.int/iris/bitstream/handle/10665/336069/9789240013131-eng.pdf page 32
+The case study we will consider in this report is the Tuberculosis dataframe where Brazil is divided into 557 administrative microregions and the available data comprises of counts of TB cases in each microregion from 2012 to 2014.
+
+We are utilising generalized additive models (GAMs) in the case study of TB in Brazil as it can model complex and nonlinear relationships between TB incidence and risk factors, control for relevant covariates, identify important predictors of TB incidence, and predict TB incidence in different regions of Brazil.
+
+<!-- Generalized linear models (GLMs) are a type of regression model that assumes a linear relationship between the dependent variable and the independent variables. While GLMs can be useful in many scenarios, they may not be appropriate for modeling complex and nonlinear relationships, such as those seen in the case of tuberculosis (TB) in Brazil. //This one is for me personally -->
 
 ## Exploratory Data Analysis:
 
     Provide a summary of the Tuberculosis dataset, including descriptive statistics and visualizations.
     Identify any patterns or trends in the data, such as geographical or temporal clusters of cases.
     Discuss any issues with the data, such as outliers or inconsistencies.
+    
+The TBdata dataframe contains information on various socio-demographic and geographic factors in Brazil that may be associated with TB incidence in each microregion. 
+These factors include indigenous population, illiteracy levels, urbanization rate, dwelling density, poverty levels, sanitation levels, unemployment rates, and timeliness of TB case reporting. 
+The dataset also includes information on the number of TB cases and population size for each microregion, as well as unique ID numbers to distinguish between the different regions. 
+
+An exploratory analysis of this dataset can reveal important insights of the potential risk factors for TB in Brazil and help guide public health interventions.
+
+We will start by analysing the distributions of each of the variables to identify any patterns 
+![Initial variable analysis](histogramExploratoryAnalysis.png)
+
+Firstly, the dwelling density seems to follow a normal distribution that is skewed to the right and a mean of approximately 0,6.
+Secondly. illiteracy is very heavily skewed to the right but it still displays a normal bell curve around the 5% illiteracy level.
+
+Poor sanitation is 
+
+Unemployment seems to follow a normal distribution with little to no skewness and a mean of approximately 6%.
+
 
 ## Model Selection:
 
@@ -102,6 +124,18 @@ plot.map(TBdata$TB[TBdata$Year==2014],n.levels=7,main="TB counts for 2014")
 ## this one is great but it becomes its own pdf so I will be using the individual functions from the package
 create_report(TBdata)
 
+```
+
+```{r, warning=FALSE, message = FALSE, echo=FALSE, eval=FALSE}
+# Set the figure size and margin
+options(repr.plot.width = 10, repr.plot.height = 8)
+
+# Select the variables of interest
+vars <- c("Indigenous", "Illiteracy", "Urbanisation", "Density", "Poverty", 
+          "Poor_Sanitation", "Unemployment", "Timeliness", "TB", "Population")
+
+# Create the scatterplot matrix
+ggpairs(TBdata[, vars])
 ```
 
 ```{r tidy=TRUE, tidy.opts=list(width.cutoff=72)}
@@ -243,11 +277,16 @@ plot(nb_model, shade=T, rug = TRUE, residuals = TRUE,scheme=1,
 pch = 1, cex = 0.5)
 ```
 
+
 ```{r tidy=TRUE, tidy.opts=list(width.cutoff=72)}
 
-
+plot(nb_model, shade=T, rug = TRUE, residuals = TRUE,scheme=2,
+pch = 1, cex = 0.5)
 
 ```
+
+
+
 
 ```{r tidy=TRUE, tidy.opts=list(width.cutoff=72)}
 
