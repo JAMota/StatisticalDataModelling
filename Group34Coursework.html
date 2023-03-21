@@ -186,12 +186,10 @@ Identify any patterns or trends in the data, such as geographical or temporal cl
 Discuss any issues with the data, such as outliers or inconsistencies.</code></pre>
 <p>The TBdata dataframe contains information on various socio-demographic and geographic factors in Brazil that may be associated with TB incidence in each microregion. These factors include indigenous population, illiteracy levels, urbanization rate, dwelling density, poverty levels, sanitation levels, unemployment rates, and timeliness of TB case reporting. The dataset also includes information on the number of TB cases and population size for each microregion, as well as unique ID numbers to distinguish between the different regions.</p>
 <p>An exploratory analysis of this dataset can reveal important insights of the potential risk factors for TB in Brazil and help guide public health interventions.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="histogramExploratoryAnalysis.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Missingness Map from 2018 to 2022</figcaption><p></p>
-</figure>
-</div>
+<p>We will start by analysing the distributions of each of the variables to identify any patterns <img src="histogramExploratoryAnalysis.png" class="img-fluid" alt="Initial variable analysis"></p>
+<p>Firstly, the dwelling density seems to follow a normal distribution that is skewed to the right and a mean of approximately 0,6. Secondly. illiteracy is very heavily skewed to the right but it still displays a normal bell curve around the 5% illiteracy level.</p>
+<p>Poor sanitation is</p>
+<p>Unemployment seems to follow a normal distribution with little to no skewness and a mean of approximately 6%.</p>
 </section>
 <section id="model-selection" class="level2">
 <h2 class="anchored" data-anchor-id="model-selection">Model Selection:</h2>
@@ -242,9 +240,12 @@ Provide visualizations of the model predictions and any interactions or nonlinea
 
 </div>
 <div class="cell">
+
+</div>
+<div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_histogram</span>(TBdata)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>//TODO talk about the histograms and relevant distributions we can observe</p>
@@ -252,7 +253,7 @@ Provide visualizations of the model predictions and any interactions or nonlinea
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_correlation</span>(TBdata)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>As we can see from the matrix, the variable that is the most correlated from TB is the population, with illiteracy, poor sanitation and poverty having a negative correlation with TB.</p>
@@ -317,45 +318,45 @@ R-sq.(adj) =  0.997   Deviance explained = 87.9%
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(poisson_model, <span class="at">shade=</span>T, <span class="at">rug =</span> <span class="cn">TRUE</span>, <span class="at">residuals =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="at">pch =</span> <span class="dv">1</span>, <span class="at">cex =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
 </div>
 <div class="cell-output-display">
-<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid" width="672"></p>
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-9-2.png" class="img-fluid" width="672"></p>
 </div>
 <div class="cell-output-display">
-<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-8-3.png" class="img-fluid" width="672"></p>
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-9-3.png" class="img-fluid" width="672"></p>
 </div>
 <div class="cell-output-display">
-<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-8-4.png" class="img-fluid" width="672"></p>
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-9-4.png" class="img-fluid" width="672"></p>
 </div>
 <div class="cell-output-display">
-<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-8-5.png" class="img-fluid" width="672"></p>
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-9-5.png" class="img-fluid" width="672"></p>
 </div>
 <div class="cell-output-display">
-<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-8-6.png" class="img-fluid" width="672"></p>
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-9-6.png" class="img-fluid" width="672"></p>
 </div>
 <div class="cell-output-display">
-<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-8-7.png" class="img-fluid" width="672"></p>
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-9-7.png" class="img-fluid" width="672"></p>
 </div>
 <div class="cell-output-display">
-<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-8-8.png" class="img-fluid" width="672"></p>
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-9-8.png" class="img-fluid" width="672"></p>
 </div>
 <div class="cell-output-display">
-<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-8-9.png" class="img-fluid" width="672"></p>
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-9-9.png" class="img-fluid" width="672"></p>
 </div>
 <div class="cell-output-display">
-<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-8-10.png" class="img-fluid" width="672"></p>
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-9-10.png" class="img-fluid" width="672"></p>
 </div>
 <div class="cell-output-display">
-<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-8-11.png" class="img-fluid" width="672"></p>
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-9-11.png" class="img-fluid" width="672"></p>
 </div>
 <div class="cell-output-display">
-<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-8-12.png" class="img-fluid" width="672"></p>
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-9-12.png" class="img-fluid" width="672"></p>
 </div>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Lets check our model residuals:</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qq.gam</span>(poisson_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-8-13.png" class="img-fluid" width="672"></p>
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-9-13.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Our QQ-plot suggest that the quantiles in our data our not similar to the line as it deviates from the line in nearly all the values, showing a very flawed fit. As this suggests that our current model doesn’t fit the data correctly and required an extension to our model as the Poisson GAM is not accounted for enough deviance as seen in the residuals.</p>
@@ -431,7 +432,7 @@ R-sq.(adj) =  0.883   Deviance explained = 58.1%
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gam.check</span>(nb_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -457,7 +458,7 @@ s(Timeliness)      19.00  4.76    0.60  &lt;2e-16 ***
 s(lat)             29.00 21.58    0.54  &lt;2e-16 ***
 s(lon)             29.00 19.46    0.56  &lt;2e-16 ***
 s(Year)             2.00  1.40    0.79  &lt;2e-16 ***
-ti(lon,lat,Year)    8.00  1.36    0.94    0.01 ** 
+ti(lon,lat,Year)    8.00  1.36    0.94    0.03 *  
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
@@ -468,7 +469,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">#checking the model residuals</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qq.gam</span>(nb_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>The QQ-plot looks much better for the Negative Binomial model. The majority of points lie either on top of very near the y=x line, except for a few towards the extremes. This indicates our assumption about the true distribution of the data is a lot more safe than it was before.</p>
@@ -486,46 +487,6 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(nb_model, <span class="at">shade=</span>T, <span class="at">rug =</span> <span class="cn">TRUE</span>, <span class="at">residuals =</span> <span class="cn">TRUE</span>,<span class="at">scheme=</span><span class="dv">1</span>,</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="at">pch =</span> <span class="dv">1</span>, <span class="at">cex =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
-</div>
-<div class="cell-output-display">
-<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-15-2.png" class="img-fluid" width="672"></p>
-</div>
-<div class="cell-output-display">
-<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-15-3.png" class="img-fluid" width="672"></p>
-</div>
-<div class="cell-output-display">
-<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-15-4.png" class="img-fluid" width="672"></p>
-</div>
-<div class="cell-output-display">
-<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-15-5.png" class="img-fluid" width="672"></p>
-</div>
-<div class="cell-output-display">
-<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-15-6.png" class="img-fluid" width="672"></p>
-</div>
-<div class="cell-output-display">
-<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-15-7.png" class="img-fluid" width="672"></p>
-</div>
-<div class="cell-output-display">
-<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-15-8.png" class="img-fluid" width="672"></p>
-</div>
-<div class="cell-output-display">
-<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-15-9.png" class="img-fluid" width="672"></p>
-</div>
-<div class="cell-output-display">
-<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-15-10.png" class="img-fluid" width="672"></p>
-</div>
-<div class="cell-output-display">
-<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-15-11.png" class="img-fluid" width="672"></p>
-</div>
-<div class="cell-output-display">
-<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-15-12.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(nb_model, <span class="at">shade =</span> T, <span class="at">rug =</span> <span class="cn">TRUE</span>, <span class="at">residuals =</span> <span class="cn">TRUE</span>, <span class="at">scheme =</span> <span class="dv">2</span>, <span class="at">pch =</span> <span class="dv">1</span>,</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">cex =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="Group34Coursework_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -561,6 +522,46 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 <div class="cell-output-display">
 <p><img src="Group34Coursework_files/figure-html/unnamed-chunk-16-12.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(nb_model, <span class="at">shade =</span> T, <span class="at">rug =</span> <span class="cn">TRUE</span>, <span class="at">residuals =</span> <span class="cn">TRUE</span>, <span class="at">scheme =</span> <span class="dv">2</span>, <span class="at">pch =</span> <span class="dv">1</span>,</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">cex =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-17-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-17-3.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-17-4.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-17-5.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-17-6.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-17-7.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-17-8.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-17-9.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-17-10.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-17-11.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Group34Coursework_files/figure-html/unnamed-chunk-17-12.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="cell">
