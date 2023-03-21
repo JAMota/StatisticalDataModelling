@@ -59,6 +59,10 @@ microregion from 2012 to 2014.
 <!-- Identify any patterns or trends in the data, such as geographical or temporal clusters of cases. -->
 <!-- Discuss any issues with the data, such as outliers or inconsistencies. -->
 
+An exploratory analysis of this dataset can reveal important insights of
+the potential risk factors for TB in Brazil and help guide public health
+interventions.
+
 The TBdata dataframe contains information on various socio-demographic
 and geographic factors in Brazil that may be associated with TB
 incidence in each microregion. These factors include indigenous
@@ -67,10 +71,6 @@ poverty levels, sanitation levels, unemployment rates, and timeliness of
 TB case reporting. The dataset also includes information on the number
 of TB cases and population size for each microregion, as well as unique
 ID numbers to distinguish between the different regions.
-
-An exploratory analysis of this dataset can reveal important insights of
-the potential risk factors for TB in Brazil and help guide public health
-interventions.
 
 We will start by analysing the distributions of each of the variables to
 identify any patterns ![Initial variable
@@ -82,10 +82,12 @@ is skewed to the right and a mean of approximately 0,6.
 Secondly illiteracy is very heavily skewed to the right but it still
 displays a normal bell curve around the 5% illiteracy level.
 
-Poor sanitation is
+Poor sanitation is extremely skewed to the right.
 
 Unemployment seems to follow a normal distribution with little to no
 skewness and a mean of approximately 6%.
+
+The other values do not seem to follow any easily identifiable trend nor provide us any meaningful insights with their distribution alone.
 
 ![Correlation Matrix](HeatMap.png)
 
@@ -194,9 +196,10 @@ variable.
 
 <!-- Provide visualizations of the model predictions and any interactions or nonlinear relationships. -->
 
-## Conclusion:
-
 <!-- Summarize the findings of the GAM model. -->
+
+
+
 
 ## Apendix
 
