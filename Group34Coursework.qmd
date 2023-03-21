@@ -26,7 +26,7 @@ bibio-style: unsrt
 
 <!-- writing and tidy presentation of R code and associated plots. -->
 
-## FOrce a page break here
+{{< pagebreak >}}
 
 ## Introduction:
 
@@ -55,9 +55,9 @@ microregion from 2012 to 2014.
 
 ## Exploratory Data Analysis:
 
-    <!-- Provide a summary of the Tuberculosis dataset, including descriptive statistics and visualizations. -->
-    <!-- Identify any patterns or trends in the data, such as geographical or temporal clusters of cases. -->
-    <!-- Discuss any issues with the data, such as outliers or inconsistencies. -->
+<!-- Provide a summary of the Tuberculosis dataset, including descriptive statistics and visualizations. -->
+<!-- Identify any patterns or trends in the data, such as geographical or temporal clusters of cases. -->
+<!-- Discuss any issues with the data, such as outliers or inconsistencies. -->
 
 The TBdata dataframe contains information on various socio-demographic
 and geographic factors in Brazil that may be associated with TB
@@ -152,8 +152,9 @@ variance holds.
 <!--Compare the GAM model to other models that were considered, such as a generalized linear model(GLM). -->
 
 ## TODO make this mathematical istead of the code
-Calulating the dispersion parameter: 
-sum(residuals(poisson_model, type = "pearson")^2) / df.residual(poisson_model) =  6.67687
+
+Calulating the dispersion parameter: sum(residuals(poisson_model, type =
+"pearson")\^2) / df.residual(poisson_model) = 6.67687
 
 As we can see from the dispersion parameter should be 1 for the
 assumption of equal mean and variance to hold true, so it seems that
