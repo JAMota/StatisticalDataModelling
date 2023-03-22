@@ -162,6 +162,10 @@ To check if this was because of over-dispersion, we calculated the Pearson estim
 
 The Negative Binomial (NB) model is an alternative to the Poisson model and is used for count data. It can adjust the variance independently from the mean, which makes it more flexible than the Poisson model. The NB model was used on the data with the same specification as before, and it was fortunate that the revised model showed a good fit. 
 
+#TODO ADD NEGATIVE BINOMIAL LATEX
+
+Let the model be : <br> $$\log(\mu_i) = \beta_0 + f_1(x_{i1}) + f_2(x_{i2}) + \ldots + f_k(x_{ik}) + \log(\phi) + \log(y_i+r_i)$$
+
 The estimate for the dispersion parameter was 1.133 and the AIC was reduced. The final model was achieved after adjusting the choice of rank for each of the smooth terms until they were not too low.
 
 <!-- An alternative model to Poisson is a Negative Binomial model. The -->
@@ -517,3 +521,5 @@ plot.map(cord.pred_2013, n.levels = 8, main ='Predicted TB risk in 2013')
 
 
 ```
+
+## Bibliography
