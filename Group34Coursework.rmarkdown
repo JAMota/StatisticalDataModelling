@@ -1,0 +1,547 @@
+---
+title: "Group 34 course work"
+format:
+  pdf:
+    toc: true
+editor: visual
+bibliography: references.bib
+bibio-style: unsrt
+quarto:
+  figure-toc: true
+  figure-toc-title: "Table of Figures"
+  figure-toc-depth: 2
+
+---
+
+
+<!-- ## Report -->
+
+<!-- Notes: no more than six figures and/or three tables • \[15 marks\] -->
+
+<!-- Understanding and exploration of both the problem and the data. • \[10 -->
+
+<!-- marks\] Thoroughness and rigour, e.g. clear mathematical description of -->
+
+<!-- models. • \[25 marks\] Clear exposition of the steps you took in model -->
+
+<!-- fitting and exposition of a final model. • \[20 marks\] Clear -->
+
+<!-- presentation and interpretation of results. • \[10 marks\] Critical -->
+
+<!-- review of the analysis. • \[20 marks\] Clarity and conciseness in -->
+
+<!-- writing and tidy presentation of R code and associated plots. -->
+
+
+{{< pagebreak >}}
+
+
+
+## Introduction:
+
+Tuberculosis (TB) is a bacterial disease that primarily affects the lungs but can also impact other parts of the body. It is a significant public health problem, with approximately 10 million cases reported globally in 2020. Brazil is a high-burden country for TB, with an estimated 96,000 cases. The purpose of this report is to determine whether various socio-economic variables impact the rate of TB per unit population in Brazil between 2012 and 2014. We will analyze data from 537 micro-regions in Brazil, including the latitude and longitude of each region and the year in which the data was collected. @who_tb_2020.
+
+The socioeconomic variables that were recorded for each micro-region in our data set are as follows:
+the level of illiteracy, urbanisation, poverty, unemployment, and
+sanitation; the proportion of indigenous population; the dwelling
+density; and finally, a proxy indicator of the amount of resources in
+the form of the average amount of time between diagnosing a TB case and
+reporting it to the health system. In addition, the latitude and
+longitude of the respective 537 micro-regions, as well as the year in
+which the data was obtained, are supplied for each of these values.
+Because of this, we will be better able to explain the geographical,
+temporal, and spatio-temporal structure of any systematic risk that is
+not described by the covariates.
+
+## Exploratory Data Analysis:
+
+<!-- Provide a summary of the Tuberculosis dataset, including descriptive statistics and visualizations. -->
+<!-- Identify any patterns or trends in the data, such as geographical or temporal clusters of cases. -->
+<!-- Discuss any issues with the data, such as outliers or inconsistencies. -->
+
+The TBdata dataframe contains information on various socio-demographic previously described and includes information on the number of TB cases and population size for each microregion, as well as unique
+ID numbers to distinguish between the different regions.
+
+<!-- Simple exploration of our covariates and their potential relationships -->
+<!-- with the rate of tuberculosis in each microregion of Brazil was carried -->
+<!-- out before attempting any type of formal statistical analysis or -->
+<!-- regression on the data. This was done before attempting to draw any -->
+<!-- conclusions from the data. The correlations that existed between each of -->
+<!-- our co-variables and the total number of TB cases were analysed with the -->
+<!-- help of pairplots. Several of the findings were unexpected, such as the -->
+<!-- observation that a lower degree of sanitation did not appear to be -->
+<!-- associated with a higher rate of tuberculosis cases. The same was true -->
+<!-- in regard to the levels of poverty. Nevertheless, the issue with -->
+<!-- attempting to infer statistical associations in such a straightforward -->
+<!-- manner is that we are unable to take into consideration the possibility -->
+<!-- of changes occurring in other variables for each of the data points. -->
+<!-- This is the primary reason why we need to use a formal model to -->
+<!-- investigate the impact of our covariates on the incidence of -->
+<!-- tuberculosis in relation to the total population. -->
+
+We conducted a preliminary exploration of the relationships between our covariates and the rate of tuberculosis in each microregion of Brazil using pairplots. We found some unexpected results, such as a lower degree of sanitation and poverty not being associated with a higher rate of tuberculosis cases. However, this simple approach doesn't account for changes in other variables for each data point, so we need to use a formal model to investigate the impact of our covariates. 
+
+refer to: bellow
+## TODO INSERT Reference to PAIR PLOT -1 AND SUMMARY-1 TABLE HERE.
+
+We chose generalized additive models (GAMs) as our preferred framework, which strikes a balance between interpretability and flexibility compared to linear models and machine learning models like neural networks or boosted trees.
+
+<!-- While developing statistical models, we are always forced to choose -->
+<!-- between two competing priorities: interpretability and flexibility. In -->
+<!-- most cases, we make an effort to fit the data to a linear model whenever -->
+<!-- that is at all possible. Linear models are simple, and it is -->
+<!-- straightforward to draw conclusions and interpretations from them. -->
+<!-- However, the correlations of interest are frequently far too complicated -->
+<!-- (and non-linear) to be correctly represented by this method, as is the -->
+<!-- case with the data that we have regarding tuberculosis. On the opposite -->
+<!-- end of the spectrum is the use of machine learning models such as neural -->
+<!-- networks or boosted trees. These techniques provide very accurate -->
+<!-- predictions of modelled relationships; nevertheless, they call for a -->
+<!-- substantial quantity of data and, more crucially, they are notoriously -->
+<!-- challenging to interpret. Generalized additive models, often known as -->
+<!-- GAMs, provide a reasonable middle ground when compared to these other -->
+<!-- choices, which is why these models were chosen to serve as this -->
+<!-- analysis' preferred framework. -->
+
+## TODO reference INSERT BRAZIL MAP HERE.
+
+
+## aka insert the better version of ggpairs
+
+Key trends observed include:
+
+-Normal distribution with right skewness and mean of 0.6 for dwelling density.
+-Right-skewed distribution with a normal bell curve around 5% for illiteracy.
+-Extreme right skewness for poor sanitation.
+-Normal distribution with little to no skewness and mean of 6% for unemployment.
+-Population is the variable most correlated with TB, while illiteracy, poor sanitation, and poverty have negative correlations.
+
+
+
+<!-- The identified trends are as followed: -->
+
+<!-- Firstly, the dwelling density seems to follow a normal distribution that -->
+<!-- is skewed to the right and a mean of approximately 0,6. -->
+
+<!-- Secondly illiteracy is very heavily skewed to the right but it still -->
+<!-- displays a normal bell curve around the 5% illiteracy level. -->
+
+<!-- Poor sanitation is extremely skewed to the right. -->
+
+<!-- Unemployment seems to follow a normal distribution with little to no -->
+<!-- skewness and a mean of approximately 6%. -->
+
+<!-- As we can see from the matrix, the variable that is the most correlated -->
+<!-- from TB is the population, with illiteracy, poor sanitation and poverty -->
+<!-- having a negative correlation with TB.  -->
+
+## Model Selection:
+
+<!-- Explain the process used to select the variables to include in the GAM model.---DONE -->
+
+<!-- Discuss any variable transformations or interactions that were considered. -->
+
+<!-- Discuss any model assumptions that were evaluated, such as the normality of the residuals, the linearity of the predictor variables, and the spatial and temporal autocorrelation. -->
+
+At first, the idea was to combine a log link and a Poisson generalised
+additive model. This was because we were working with count data in the
+form of TB cases broken down by each microregion. Nonetheless, it was
+essential to standardise this count because the populations in each
+region were distinct from one another. After doing some study on the
+topic, I discovered that using the log of the population in the model is
+the most effective way to carry out a population standardised
+regression. While we were trying to fit our model in R, it was necessary
+for us to include an offset for the log of the population. This provides
+us with the tuberculosis rate per capita:
+
+Let the model be : $$ Log(\lambda_i) = offset(log(Population_i)) + f_1(Indigenous_i) + f_2(Illiteracy_i) + \\f_3(Urbanisation_i) + f_4(Density_i) + f_5(Poverty_i) + f_6(PoorSanitation_i) +\\ f_7(Unemployment_i) + f_8(Timeliness_i) + f_9(Year_i) + f_{10}(Year_i, lon_i) + \\ f_{11}(lat_i,Year_i),\\ {u_i} = E[TB_i] and TB_i \sim Pois(\lambda_i) $$
+
+<!-- Generalized linear models (GLMs) are a type of regression model that assumes a linear relationship between the dependent variable and the independent variables. While GLMs can be useful in many scenarios, they may not be appropriate for modeling complex and nonlinear relationships, such as those seen in the case of tuberculosis (TB) in Brazil. //This one is for me personally -->
+
+Confirming that our model was accurate was the next step in the process
+of developing our model. Unfortuitously, a QQ-plot revealed that the
+quantiles in our data did not closely resemble what they would look like
+if they followed a theoretical poisson distribution. This was the
+conclusion that could be drawn from the plot.
+
+After calculating a Pearson estimate of our dispersion parameter to
+determine whether or not this lack of fit was due to over-dispersion,
+the results were unequivocal: the parameter was almost 7 (when it should
+have been 1), which indicated that our data was indeed over dispersed
+for a Poisson model.
+
+An alternative model to Poisson is a Negative Binomial model. The
+Negative Binomial (NB) model is likewise suitable for use with count
+data; however, it differs from the Poisson regression in that it
+contains an additional parameter that can alter the variance
+independently from the mean.
+
+mean. Because of this, it is more flexible than the Poisson model, and
+as a result, it can fit data with a greater degree of fluctuation. A NB
+model was fitted to the data making use of the exact same specification
+as was used before. We can count ourselves fortunate that the QQ-plot5
+for the revised model showed a good fit (the majority of the dots fell
+on the y=x line), and the estimate for the dispersion parameter was
+1.133. The AIC was also reduced for our newly developed model. We
+arrived at the following model after making adjustments to the choice of
+rank for each of our smooth terms (covariates), until we were certain
+that they were not too low (edf not too near to k').
+
+INSERT BOTH QQ PLOT HERE, FIGURE -2 at the last of the code.
+
+## Model Fitting:
+
+<!-- Explain the process used to fit the GAM model, such as the choice of smoothing functions, the type of penalty used, and the optimization algorithm used to estimate the parameters. -->
+
+<!-- Describe the hyperparameters used, such as the degree of smoothing or the type of penalty used. -->
+
+## TODO QQ-plot reference 
+
+
+Our QQ-plot suggest that the quantiles in our data our not similar to
+the line as it deviates from the line in nearly all the values, showing
+a very flawed fit. As this suggests that our current model doesn't fit
+the data correctly and required an extension to our model as the Poisson
+GAM is not accounted for enough deviance as seen in the residuals.
+
+Since the model is not accounting for enough of the variance we will
+check if there is a significant difference between the variance and the
+mean. In this analyses we will use the Pearson estimate for the
+dispersion parameter, this method allow us to estimate the amount of
+extra variability, or over-dispersion in count data and therefore
+analyse if the Poisson distribution assumption of equal mean and
+variance holds.
+
+## Model Evaluation:
+
+<!--Provide a summary of the goodness-of-fit measures used to evaluate the model, such as the explained variance, the deviance, and the residual analysis. -->
+
+<!--Discuss any limitations or assumptions of the GAM model, such as the potential for overfitting or the sensitivity to the choice of smoothing parameters. -->
+
+<!--Compare the GAM model to other models that were considered, such as a generalized linear model(GLM). -->
+
+## TODO dispersion parameter
+
+
+As we can see from the dispersion parameter should be 1 for the
+assumption of equal mean and variance to hold true, so it seems that
+there is substantial over-dispersion in the Poisson GAM. This violates
+one of the Poisson assumptions that the mean and variance are equal
+therefore we will have to extend the model from e GAM Poisson to a
+Negative Binomial GAM
+
+As we can see from the residual versus predictor plot, the values seem
+to be randomly scattered with no clear trend but with some distance from
+the zero line. As such we can determine that this scatter is due to
+random errors and not a unaccounted pastern in the model.
+
+##negative binomial QQ-plot reference
+<!-- ![QQ - Negative Binomial](QQNB.png) -->
+
+The QQ-plot looks much better for the Negative Binomial model. The
+majority of points lie either on top of very near the y=x line, except
+for a few towards the extremes. This indicates our assumption about the
+true distribution of the data is a lot more safe than it was before.
+
+## TODO add three residual sum here
+
+sum(residuals(nb_model, type = "pearson")\^2) / df.residual(nb_model)
+
+The dispersion parameter is very close to 1, unlike for the Poisson
+model, meaning that the model that can account for most of the
+over-dispersion in the data. As such a dispersion parameter value close
+to 1 can be interpreted as the model is a good fit for the data due to
+the model adequately capture the variability of the the response
+variable.
+
+## Results and Interpretation:
+
+<!-- Present the results of the GAM model, including the coefficients and their confidence intervals. -->
+
+<!-- Interpret the coefficients and their practical significance. -->
+
+<!-- Provide visualizations of the model predictions and any interactions or nonlinear relationships. -->
+
+## Conclusion:
+
+<!-- Summarize the findings of the GAM model. -->
+
+## Figures
+
+![QQ Plot](QQ.png) 
+
+{figure label="fig:heatMap"}
+![Correlation Matrix](HeatMap.png)
+{caption: This is the heatmap that we will remove and get the better ggpairs}
+{/figure}
+
+![Initial variable analysis](histogramExploratoryAnalysis.png)
+
+## Code Appendix
+
+
+```{r tidy=TRUE, tidy.opts=list(width.cutoff=72), echo=FALSE, output=FALSE}
+
+# Loading packages
+library(fields)
+library(maps)
+library(sp)
+library(mgcv)
+library(ggplot2)
+library(GGally)
+library(xtable)
+
+load("datasets_project.Rdata")
+
+# install.packages("isadug ") package for latex table conversion
+library(DataExplorer)
+
+
+
+```
+
+```{r,}
+
+## PLotting map of cases
+par(mfrow = c(1,3))
+plot.map(TBdata$TB[TBdata$Year==2012],n.levels=7,main="TB counts for 2012")
+plot.map(TBdata$TB[TBdata$Year==2013],n.levels=7,main="TB counts for 2013")
+plot.map(TBdata$TB[TBdata$Year==2014],n.levels=7,main="TB counts for 2014")
+par(mfrow = c(1,1))
+
+```
+
+
+## Exploratory analyses
+
+
+```{r tidy=TRUE, tidy.opts=list(width.cutoff=72), echo=FALSE, eval=FALSE}
+
+##plot(TBdata) looks terrible
+
+## this one is great but it becomes its own pdf so I will be using the individual functions from the package
+create_report(TBdata)
+
+```
+
+```{r, warning=FALSE, message = FALSE, echo=FALSE, eval=FALSE, fig.height=6, fig.width=6}
+# INSERT THIS IN THE REPORT AS Figure-1
+# Set the figure size and margin
+options(repr.plot.width = 10, repr.plot.height = 8)
+
+# Select the variables of interest
+vars <- c("TB","Indigenous", "Illiteracy", "Urbanisation", "Density", "Poverty", 
+          "Poor_Sanitation", "Unemployment", "Timeliness", "Population")
+
+# Create the scatterplot matrix
+ggpairs(TBdata[ ,vars])
+```
+
+```{r}
+# INSERT THIS AS SUMMARY TABLE AS TABLE-1
+summary_table <- summary(TBdata)
+# Convert the summary table to a LaTeX table using the xtable() function
+latex_table <- xtable(summary_table)
+
+# Print the LaTeX table to the console
+print(latex_table)
+```
+
+```{r tidy=TRUE, tidy.opts=list(width.cutoff=72)}
+# AIM TO SKIP IT AS WE HAVE ALREADY USED CORRPLOT
+plot_histogram(TBdata)
+
+```
+
+
+//TODO talk about the histograms and relevant distributions we can
+observe
+
+Now investigating the correlation matrix of the numerical variables
+
+
+```{r tidy=TRUE, tidy.opts=list(width.cutoff=72)}
+# NOT REQUIRED AS WE HAVE ALREADY USED CORRPLOT
+#plot_correlation(TBdata)
+
+```
+
+
+As we can see from the matrix, the variable that is the most correlated
+from TB is the population, with illiteracy, poor sanitation and poverty
+having a negative correlation with TB.
+
+## Poisson definition
+
+As the data is count data we will first fit a Poisson module since this
+distribution is a good fit for the nature of the data
+
+
+```{r}
+poisson_model <- gam(TB ~ offset(log(Population)) + s(Indigenous, k = 20) + s(Illiteracy , k = 20) + s(Urbanisation, k = 20) + s(Density, k = 20) + s(Poverty, k = 20) + s(Poor_Sanitation, k = 20) + s(Unemployment, k = 20) + s(Year, k=3) + s(Timeliness, k = 20) +te(lon, Year, k = 3)+ te(lat, Year, k = 3), family = poisson, data = TBdata, method = 'REML')
+summary(poisson_model)
+```
+
+```{r, eval=FALSE}
+gam.check(poisson_model)
+```
+
+
+<!-- ## Separate the plots the output is too messy -->
+
+
+```{r}
+#Akaike Information Criterion:
+poisson_model$aic
+
+plot(poisson_model, shade=T, rug = TRUE, residuals = TRUE,
+pch = 1, cex = 0.5)
+
+```
+
+
+Our QQ-plot suggest that the poisson model fit deviates from the
+theoretical quantiles in nearly all the values, showing a very flawed
+fit. As this suggests that our current model doesn't fit the data
+correctly and required an extension to our model as the Poisson GAM is
+not accounted for enough deviance as seen in the residuals.
+
+<!-- ## TODO better prepare the residuals and explain them if we have enough figures to show -->
+
+<!-- ## TODO better prepare the residuals and explain them if we have enough figures to show -->
+
+Since the model is not accounting for enough of the variance we will
+check if there is a significant difference between the variance and the
+mean. In this analyses we will use the Pearson estimate for the
+dispersion parameter, this method allow us to estimate the amount of
+extra variability, or over-dispersion in count data and therefore
+analyse if the Poisson distribution assumption of equal mean and
+variance holds.
+
+
+```{r}
+#Calculating Pearson estimate for dispersion parameter using Pearson residuals:
+sum(residuals(poisson_model, type = "pearson")^2) / df.residual(poisson_model)
+
+#The dispersion parameter should be 1, so it seems that there is substantial over-dispersion in the Poisson GAM.
+```
+
+
+As we can see from the dispersion parameter should be 1 for the
+assumption of equal mean and variance to hold true, so it seems that
+there is substantial over-dispersion in the Poisson GAM. This violates
+one of the Poisson assumptions that the mean and variance are equal
+therefore we will have to extend the model from e GAM Poisson to a
+Negative Binomial GAM
+
+## Negative binomial
+
+
+```{r}
+#fitting a negative-binomial model to our TB data:
+nb_model <- gam(TB ~ offset(log(Population)) + s(Indigenous, k = 20) + s(Illiteracy , k = 20) + s(Urbanisation, k = 20) + s(Density, k = 20) + s(Poverty, k = 20) + s(Poor_Sanitation, k = 20) + s(Unemployment, k = 20) + s(Year, k=3) + s(Timeliness, k = 20) +te(lon, Year, k = 3)+ te(lat, Year, k = 3), negbin(theta = 9, link = "log"), data = TBdata, method = 'REML')
+
+summary(nb_model)
+```
+
+```{r}
+#Akaike Information Criterion
+nb_model$aic
+```
+
+
+As we can see from this Akaike Information Criterion(AIC) the Negative
+Binomial has a significantly lower value than the previous 18585,52 from
+the GAM Poisson, meaning this is already a better fitting model than the
+previous one.
+
+Now we will check the residuals to check for any anomalies on our model
+prediction
+
+
+```{r}
+gam.check(nb_model)
+```
+
+
+As we can see from the residual versus predictor plot, the values seem
+to be randomly scattered with no clear trend but with some distance from
+the zero line. As such we can determine that this scatter is due to
+random errors and not a uncounted pattern in the model.
+
+<!-- ##TODO double check this last claim with matthew -->
+
+
+```{r}
+plot(nb_model, shade=T, rug = TRUE, residuals = TRUE,
+pch = 1, scheme =1,  cex = 0.5)
+```
+
+
+The QQ-plot looks much better for the Negative Binomial model. The
+majority of points lie either on top of very near the y=x line, except
+for a few towards the extremes. This indicates our assumption about the
+true distribution of the data is a lot more safe than it was before.
+
+
+```{r}
+#Calculating Pearson estimate for dispersion parameter using Pearson residuals:
+sum(residuals(nb_model, type = "pearson")^2) / df.residual(nb_model)
+```
+
+
+The dispersion parameter is very close to 1, unlike for the Poisson
+model, meaning that the model that can account for most of the
+over-dispersion in the data. As such a dispersion parameter value close
+to 1 can be interpreted as the model is a good fit for the data due to
+the model adequately capture the variability of the the response
+variable.
+
+## Again tidy up the plots of the Negative Binomial
+
+
+```{r}
+plot(nb_model, shade=T, rug = TRUE, residuals = TRUE,scheme=1,
+pch = 1, cex = 0.5)
+```
+
+```{r tidy=TRUE, tidy.opts=list(width.cutoff=72)}
+
+plot(nb_model, shade=T, rug = TRUE, residuals = TRUE,scheme=2,
+pch = 1, cex = 0.5)
+
+```
+
+```{r tidy=TRUE, tidy.opts=list(width.cutoff=72, fig.width = 12)}
+par(mfrow= c(1,2))
+
+qq.gam(poisson_model, main = 'Q-Q Plot for Poisson Model')
+qq.gam(nb_model, main = 'Q-Q Plot for Negative Binomial Model')
+
+```
+
+```{r tidy=TRUE, tidy.opts=list(width.cutoff=72)}
+preds = predict(nb_model, type = 'terms', se.fit = FALSE)
+year2012 <- preds[1:557, ]
+year2013 <- preds[558:1114, ]
+year2014 <- preds[1115:1671, ]
+cord.pred_2012 <- as.numeric(year2012[ ,8]) 
+cord.pred_2013 <- as.numeric(year2013[ ,9])
+cord.pred_2014 <- as.numeric(year2014[ ,10])
+List = list(cord.pred_2012, cord.pred_2013, cord.pred_2014)
+cord.preds.mean <- rowMeans(simplify2array(List))
+cord.change_1 <- cord.pred_2013 - cord.pred_2012
+cord.change_2 <- cord.pred_2014 - cord.pred_2013
+```
+
+```{r tidy=TRUE, tidy.opts=list(width.cutoff=72)}
+plot.map(cord.pred_2012, n.levels = 8, main ='Predicted TB risk in 2012')
+
+```
+
+```{r tidy=TRUE, tidy.opts=list(width.cutoff=72)}
+plot.map(cord.pred_2013, n.levels = 8, main ='Predicted TB risk in 2013')
+
+
+```
+
