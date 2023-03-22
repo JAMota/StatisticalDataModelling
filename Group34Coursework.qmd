@@ -141,8 +141,6 @@ Poor sanitation is extremely skewed to the right.
 Unemployment seems to follow a normal distribution with little to no
 skewness and a mean of approximately 6%.
 
-
-
 As we can see from the matrix, the variable that is the most correlated
 from TB is the population, with illiteracy, poor sanitation and poverty
 having a negative correlation with TB. 
@@ -278,7 +276,7 @@ variable.
 
 <!-- Summarize the findings of the GAM model. -->
 
-## Images
+## Figures
 
 ![QQ Plot](QQ.png) 
 
@@ -304,8 +302,10 @@ library(xtable)
 
 load("datasets_project.Rdata")
 
-# install.packages("xtable")
+# install.packages("isadug ") package for latex table conversion
 library(DataExplorer)
+
+
 
 ```
 
