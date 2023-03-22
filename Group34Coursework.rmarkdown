@@ -117,7 +117,6 @@ Key trends observed include:
 -Population is the variable most correlated with TB, while illiteracy, poor sanitation, and poverty have negative correlations.
 
 
-
 <!-- The identified trends are as followed: -->
 
 <!-- Firstly, the dwelling density seems to follow a normal distribution that -->
@@ -143,49 +142,48 @@ Key trends observed include:
 
 <!-- Discuss any model assumptions that were evaluated, such as the normality of the residuals, the linearity of the predictor variables, and the spatial and temporal autocorrelation. -->
 
-At first, the idea was to combine a log link and a Poisson generalised
-additive model. This was because we were working with count data in the
-form of TB cases broken down by each microregion. Nonetheless, it was
-essential to standardise this count because the populations in each
-region were distinct from one another. After doing some study on the
-topic, I discovered that using the log of the population in the model is
-the most effective way to carry out a population standardised
-regression. While we were trying to fit our model in R, it was necessary
-for us to include an offset for the log of the population. This provides
-us with the tuberculosis rate per capita:
+Initially, a Poisson generalized additive model with a log link was considered for count data of TB cases by microregion. However, standardizing the count by population was necessary, and using the log of population in the model was found to be the most effective method. To achieve this, an offset for the log of population was included in the model in R, resulting in the tuberculosis rate per capita.
 
-Let the model be : $$ Log(\lambda_i) = offset(log(Population_i)) + f_1(Indigenous_i) + f_2(Illiteracy_i) + \\f_3(Urbanisation_i) + f_4(Density_i) + f_5(Poverty_i) + f_6(PoorSanitation_i) +\\ f_7(Unemployment_i) + f_8(Timeliness_i) + f_9(Year_i) + f_{10}(Year_i, lon_i) + \\ f_{11}(lat_i,Year_i),\\ {u_i} = E[TB_i] and TB_i \sim Pois(\lambda_i) $$
+Let the model be : <br> $$ Log(\lambda_i) = offset(log(Population_i)) + f_1(Indigenous_i) + $$ <br> $$ f_2(Illiteracy_i) + \\f_3(Urbanisation_i) + f_4(Density_i) + f_5(Poverty_i) + $$ <br> $$ f_6(PoorSanitation_i) +\\ f_7(Unemployment_i) + f_8(Timeliness_i) + $$ <br> $$ f_9(Year_i) + f_{10}(Year_i, lon_i) + \\ f_{11}(lat_i,Year_i), $$ <br> $$ {u_i} = E[TB_i] ~~ and  ~~ TB_i \sim Pois(\lambda_i) $$
 
 <!-- Generalized linear models (GLMs) are a type of regression model that assumes a linear relationship between the dependent variable and the independent variables. While GLMs can be useful in many scenarios, they may not be appropriate for modeling complex and nonlinear relationships, such as those seen in the case of tuberculosis (TB) in Brazil. //This one is for me personally -->
 
-Confirming that our model was accurate was the next step in the process
-of developing our model. Unfortuitously, a QQ-plot revealed that the
-quantiles in our data did not closely resemble what they would look like
-if they followed a theoretical poisson distribution. This was the
-conclusion that could be drawn from the plot.
+<!-- Confirming that our model was accurate was the next step in the process -->
+<!-- of developing our model. Unfortuitously, a QQ-plot revealed that the -->
+<!-- quantiles in our data did not closely resemble what they would look like -->
+<!-- if they followed a theoretical poisson distribution. This was the -->
+<!-- conclusion that could be drawn from the plot. -->
 
-After calculating a Pearson estimate of our dispersion parameter to
-determine whether or not this lack of fit was due to over-dispersion,
-the results were unequivocal: the parameter was almost 7 (when it should
-have been 1), which indicated that our data was indeed over dispersed
-for a Poisson model.
+<!-- After calculating a Pearson estimate of our dispersion parameter to -->
+<!-- determine whether or not this lack of fit was due to over-dispersion, -->
+<!-- the results were unequivocal: the parameter was almost 7 (when it should -->
+<!-- have been 1), which indicated that our data was indeed over dispersed -->
+<!-- for a Poisson model. -->
 
-An alternative model to Poisson is a Negative Binomial model. The
-Negative Binomial (NB) model is likewise suitable for use with count
-data; however, it differs from the Poisson regression in that it
-contains an additional parameter that can alter the variance
-independently from the mean.
+Next, we needed to check if our model was accurate. Unfortunately, we found that the distribution of our data didn't look like a theoretical Poisson distribution, as shown by a QQ-plot.
 
-mean. Because of this, it is more flexible than the Poisson model, and
-as a result, it can fit data with a greater degree of fluctuation. A NB
-model was fitted to the data making use of the exact same specification
-as was used before. We can count ourselves fortunate that the QQ-plot5
-for the revised model showed a good fit (the majority of the dots fell
-on the y=x line), and the estimate for the dispersion parameter was
-1.133. The AIC was also reduced for our newly developed model. We
-arrived at the following model after making adjustments to the choice of
-rank for each of our smooth terms (covariates), until we were certain
-that they were not too low (edf not too near to k').
+To check if this was because of over-dispersion, we calculated the Pearson estimate of our dispersion parameter, which was almost 7 when it should have been 1. This means that our data was over-dispersed for a Poisson model.
+
+The Negative Binomial (NB) model is an alternative to the Poisson model and is used for count data. It can adjust the variance independently from the mean, which makes it more flexible than the Poisson model. The NB model was used on the data with the same specification as before, and it was fortunate that the revised model showed a good fit. 
+
+The estimate for the dispersion parameter was 1.133 and the AIC was reduced. The final model was achieved after adjusting the choice of rank for each of the smooth terms until they were not too low.
+
+<!-- An alternative model to Poisson is a Negative Binomial model. The -->
+<!-- Negative Binomial (NB) model is likewise suitable for use with count -->
+<!-- data; however, it differs from the Poisson regression in that it -->
+<!-- contains an additional parameter that can alter the variance -->
+<!-- independently from the mean. -->
+
+<!-- mean. Because of this, it is more flexible than the Poisson model, and -->
+<!-- as a result, it can fit data with a greater degree of fluctuation. A NB -->
+<!-- model was fitted to the data making use of the exact same specification -->
+<!-- as was used before. We can count ourselves fortunate that the QQ-plot5 -->
+<!-- for the revised model showed a good fit (the majority of the dots fell -->
+<!-- on the y=x line), and the estimate for the dispersion parameter was -->
+<!-- 1.133. The AIC was also reduced for our newly developed model. We -->
+<!-- arrived at the following model after making adjustments to the choice of -->
+<!-- rank for each of our smooth terms (covariates), until we were certain -->
+<!-- that they were not too low (edf not too near to k'). -->
 
 INSERT BOTH QQ PLOT HERE, FIGURE -2 at the last of the code.
 
