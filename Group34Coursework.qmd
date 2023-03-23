@@ -59,13 +59,10 @@ risk that is not described by the covariates.
 
 ## Exploratory Data Analysis:
 
-Simple exploration of our covariates and their potential relationships
+A simple exploration of our covariates and their potential relationships
 with the rate of tuberculosis in each microregion of Brazil was carried
 out before attempting any type of formal statistical analysis or
-regression on the data. This was done before attempting to draw any
-conclusions from the data. The correlations that existed between each of
-our co-variables and the total number of TB cases were analysed with the
-help of pairplots. Several of the findings were unexpected, such as the
+regression on the data. Several of the findings were unexpected, such as the
 observation that a lower degree of sanitation did not appear to be
 associated with a higher rate of tuberculosis cases. The same was true
 in regard to the levels of poverty. Nevertheless, the issue with
@@ -76,26 +73,10 @@ This is the primary reason why we need to use a formal model to
 investigate the impact of our covariates on the incidence of
 tuberculosis in relation to the total population.
 
-INSERT PAIR PLOT -1 AND SUMMARY-1 TABLE HERE.
+@fig-Analysis
 
-While developing statistical models, we are always forced to choose
-between two competing priorities: interpretability and flexibility. In
-most cases, we make an effort to fit the data to a linear model whenever
-that is at all possible. Linear models are simple, and it is
-straightforward to draw conclusions and interpretations from them.
-However, the correlations of interest are frequently far too complicated
-(and non-linear) to be correctly represented by this method, as is the
-case with the data that we have regarding tuberculosis. On the opposite
-end of the spectrum is the use of machine learning models such as neural
-networks or boosted trees. These techniques provide very accurate
-predictions of modelled relationships; nevertheless, they call for a
-substantial quantity of data and, more crucially, they are notoriously
-challenging to interpret. Generalized additive models, often known as
-GAMs, provide a reasonable middle ground when compared to these other
-choices, which is why these models were chosen to serve as this
-analysis' preferred framework.
+When developing statistical models, there is a trade-off between interpretability and flexibility. Linear models are often preferred due to their simplicity and ease of interpretation, but they may not accurately represent complex non-linear relationships in the data, such as in the case of tuberculosis data. On the other hand, machine learning models like neural networks or boosted trees can provide accurate predictions but are difficult to interpret and require a large amount of data. As a middle ground, generalized additive models (GAMs) were chosen as the preferred framework for analysis in this case. GAMs provide a balance between interpretability and flexibility, making them a suitable choice for this analysis.
 
-INSERT BRAZIL MAP HERE - fig 7.
 @fig-Brazil
 
 ## Model Selection:
@@ -234,11 +215,6 @@ we move horizontally then vertically.
 
 @fig-SpatialAnal
 
-Thirdly, merging the 2 previous analysis into the spatio-temporal we can
-see a more significant decrease of cases in the geographical center of
-Brazil and the Amazonian outskirts in both years Where the coastal
-regions have a some improvements from 2012 to 2013 but have either
-maintained or increased their TB risk from 2013 to 2014
 
 Thirdly, merging the 2 previous analysis into the spatio-temporal we can
 see a more significant decrease of cases overall from 2012 to 2013 in
@@ -274,7 +250,7 @@ computing cost and complexity.
 
 ## Figures
 
-![Brazil Risk exploration](Exploration.png){#fig-Brazil}
+![Brazil TB exploratory Analysis](Exploration.png){#fig-Analysis}
 
 ![QQ Plot](QQ.png){#fig-QQ-plot}
 
