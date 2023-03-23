@@ -94,7 +94,7 @@ GAMs, provide a reasonable middle ground when compared to these other
 choices, which is why these models were chosen to serve as this
 analysis' preferred framework.
 
-INSERT BRAZIL MAP HERE.
+INSERT BRAZIL MAP HERE - fig 7.
 
 ## Model Selection:
 
