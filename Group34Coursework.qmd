@@ -32,6 +32,7 @@ quarto:
 
 {{< pagebreak >}}
 
+
 ## Introduction:
 
 Tuberculosis (TB) is a bacterial disease that primarily affects the
@@ -40,11 +41,11 @@ public health problem, with approximately 10 million cases reported
 globally in 2020. Brazil is a high-burden country for TB, with an
 estimated 96000 cases. The purpose of this report is to determine
 whether various socio-economic variables impact the rate of TB per unit
-population in Brazil between 2012 and 2014. We will analyze data from
+population in Brazil between 2012 and 2014. We will analyse data from
 537 micro-regions in Brazil, including the latitude and longitude of
 each region and the year in which the data was collected. @who_tb_2020.
 
-The socioeconomic variables that were recorded for each micro-region in
+The socio-economic variables that were recorded for each micro-region in
 our data set are as follows: the level of illiteracy, urbanisation,
 poverty, unemployment, and sanitation; the proportion of indigenous
 population; the dwelling density; and finally, a proxy indicator of the
@@ -56,7 +57,7 @@ these values. Because of this, we will be better able to explain the
 geographical, temporal, and spatio-temporal structure of any systematic
 risk that is not described by the covariates.
 
-## Exploratory Data Analysis:S
+## Exploratory Data Analysis:
 
 Simple exploration of our covariates and their potential relationships
 with the rate of tuberculosis in each microregion of Brazil was carried
@@ -95,6 +96,7 @@ choices, which is why these models were chosen to serve as this
 analysis' preferred framework.
 
 INSERT BRAZIL MAP HERE - fig 7.
+@fig-Brazil
 
 ## Model Selection:
 
@@ -102,9 +104,9 @@ At first, the idea was to combine a log link and a Poisson generalised
 additive model. This was because we were working with count data in the
 form of TB cases broken down by each microregion. Nonetheless, it was
 essential to standardise this count because the populations in each
-region were distinct from one another.
-After doing some study on the topic, we discovered that using the log of the population in the model is
-the most effective way to carry out a population standardised
+region were distinct from one another. After doing some study on the
+topic, we discovered that using the log of the population in the model
+is the most effective way to carry out a population standardised
 regression. While we were trying to fit our model in R, it was necessary
 for us to include an offset for the log of the population. This provides
 us with the tuberculosis rate per capita:
@@ -120,17 +122,15 @@ $$ f_9(Year_i) + f_{10}(Year_i, lon_i) + \\ f_{11}(lat_i,Year_i), $$
 <br> $$ {u_i} = E[TB_i] ~~ and  ~~ TB_i \sim Pois(\lambda_i) $$
 
 Confirming that our model was accurate was the next step in the process
-of developing our model. 
-Unfortunately, a QQ-plot revealed that the
+of developing our model. Unfortunately, a QQ-plot revealed that the
 quantiles in our data did not closely resemble what they would look like
-if they followed a theoretical poisson distribution.
-This was the
-conclusion that could be drawn from the plot.
-After calculating a Pearson
-estimate of our dispersion parameter to determine whether or not this
-lack of fit was due to over-dispersion, the results were unequivocal:
-the parameter was almost 9,33 (when it should have been 1), which
-indicated that our data was indeed over dispersed for a Poisson model.
+if they followed a theoretical poisson distribution. This was the
+conclusion that could be drawn from the plot. After calculating a
+Pearson estimate of our dispersion parameter to determine whether or not
+this lack of fit was due to over-dispersion, the results were
+unequivocal: the parameter was almost 9,33 (when it should have been 1),
+which indicated that our data was indeed over dispersed for a Poisson
+model.
 
 An alternative model to Poisson is a Negative Binomial model. The
 Negative Binomial (NB) model is likewise suitable for use with count
@@ -138,22 +138,20 @@ data; however, it differs from the Poisson regression in that it
 contains an additional parameter that can alter the variance
 independently from the mean.
 
-#TODO ADD NEGATIVE BINOMIAL LATEX
-
 <!-- Let the model be : <br> -->
+
 <!-- $$ Log(\lambda_i) = offset(log(Population_i)) + f_1(Indigenous_i) + f_2(Illiteracy_i) + \\f_3(Urbanisation_i) + f_4(Density_i) + f_5(Poverty_i) + f_6(PoorSanitation_i) +\\ f_7(Unemployment_i) + f_8(Timeliness_i) + f_9(Year_i) + f_{10}(Year_i, lon_i) + \\ f_{11}(lat_i,Year_i),\\ {u_i} = E[TB_i] and TB_i \sim NB(r,p) $$ -->
 
-Because of this, it is more flexible than
-the Poisson model, and as a result, it can fit data with a greater
-degree of fluctuation. A NB model was fitted to the data making use of
-the exact same specification as was used before. We can count ourselves
-fortunate that the QQ-plot5 for the revised model showed a good fit (the
-majority of the dots fell on the y=x line), and the estimate for the
-dispersion parameter was 1,133. The AIC was also reduced for our newly
-developed model. We arrived at the following model after making
-adjustments to the choice of rank for each of our smooth terms
-(covariates), until we were certain that they were not too low and edf was not
-too similar to k'.
+Because of this, it is more flexible than the Poisson model, and as a
+result, it can fit data with a greater degree of fluctuation. A NB model
+was fitted to the data making use of the exact same specification as was
+used before. We can count ourselves fortunate that the QQ-plot5 for the
+revised model showed a good fit (the majority of the dots fell on the
+y=x line), and the estimate for the dispersion parameter was 1,133. The
+AIC was also reduced for our newly developed model. We arrived at the
+following model after making adjustments to the choice of rank for each
+of our smooth terms (covariates), until we were certain that they were
+not too low and edf was not too similar to k'.
 
 INSERT BOTH QQ PLOT HERE, FIGURE -2 at the last of the code.
 
@@ -212,34 +210,44 @@ appropriate for modeling the logarithm of the expected counts.
 
 <!-- HERE DISCUSS THE FIGURES -->
 
-
 <!-- temporally the only variable that changes is the TB cases and population per region -->
 
 <!-- 1.  TEMPORAL -->
+
 <!-- 2.  SPATIAL -->
+
 <!-- 3.  SPATIAL-TEMPORAL -->
 
-First, lets discuss the spatial findings of our analysis. 
-As we can see from the yearly graph, @fig-TemporalAnal, the analysis shows that there is a gradual decrease of TB cases per capita from 2012 to 2013 at the national level.
-In contract from 2013 to 2014 the data displays very little decrease of TB risk on a national level.
+First, lets discuss the spatial findings of our analysis. As we can see
+from the yearly graph, @fig-TemporalAnal, the analysis shows that there
+is a gradual decrease of TB cases per capita from 2012 to 2013 at the
+national level. In contract from 2013 to 2014 the data displays very
+little decrease of TB risk on a national level.
 
- Secondly, our spatial analysis discovered that the risk of Tb increases the more you deviate from the geological center of Brazil, with the risk of Tb <!-- going from 3.6 to 4.8 --> increasing up to 33% as we go from the center-east region of Brazil to its borders on west side including as such a big portion of the Amazonian region. However as it can be observed from the figure there is a much bigger increase in TB risk as we move horizontally then vertically.
+Secondly, our spatial analysis discovered that the risk of Tb increases
+the more you deviate from the geological center of Brazil, with the risk
+of Tb <!-- going from 3.6 to 4.8 --> increasing up to 33% as we go from
+the center-east region of Brazil to its borders on west side including
+as such a big portion of the Amazonian region. However as it can be
+observed from the figure there is a much bigger increase in TB risk as
+we move horizontally then vertically.
 
 @fig-SpatialAnal
 
-Thirdly, merging the 2 previous analysis into the spatio-temporal we can see a more significant decrease of cases in the geographical center of Brazil and the Amazonian outskirts in both years Where the coastal regions have a some improvements from 2012 to 2013 but have either maintained or increased their TB risk from 2013 to 2014
+Thirdly, merging the 2 previous analysis into the spatio-temporal we can
+see a more significant decrease of cases in the geographical center of
+Brazil and the Amazonian outskirts in both years Where the coastal
+regions have a some improvements from 2012 to 2013 but have either
+maintained or increased their TB risk from 2013 to 2014
 
-Thirdly, merging the 2 previous analysis into the spatio-temporal we can see a more significant decrease of cases overall from 2012 to 2013 in all microregions.
-In the geographical center of Brazil and the Amazonian outskirts in both years Where the coastal regions have a some improvements from 2012 to 2013 but have either maintained or increased their TB risk from 2013 to 2014
-
+Thirdly, merging the 2 previous analysis into the spatio-temporal we can
+see a more significant decrease of cases overall from 2012 to 2013 in
+all microregions. In the geographical center of Brazil and the Amazonian
+outskirts in both years Where the coastal regions have a some
+improvements from 2012 to 2013 but have either maintained or increased
+their TB risk from 2013 to 2014
 
 @fig-SpatialTemporalAnal and 7
-
-
-
-## TODO reference the temporal and spatial graphs here
-
-
 
 ## Conclusion:
 
@@ -266,18 +274,18 @@ computing cost and complexity.
 
 ## Figures
 
+![Brazil Risk exploration](Exploration.png){#fig-Brazil}
 
-![QQ Plot](QQ.png)
+![QQ Plot](QQ.png){#fig-QQ-plot}
 
+![Temporal Analysis of risk of TB per Year - fig 4](Temporal.png){#fig-TemporalAnal}
 
-
-![Temporal Analysis of risk of TB per Year - fig 4](Temporal.png){fig-TemporalAnal}
 ![Spatial Analysis of risk of TB per Year per region -fig 5](Spatial.png){#fig-SpatialAnal}
 
 ![Temporal-Spatial Analysis of risk of TB per 100000 per Year per region -fig 6](SpatialTemporal.png){#fig-SpatialTemporalAnal}
 
 if we have a spare 
-![Temporal-Spatial Analysis of risk of TB per 100000 per Year per region -fig 7](TemporalSpatial.png)
+![Temporal-Spatial Analysis of risk of TB per 100000 per Year per region -fig 7](TemporalSpatial.png){#fig-Brazil}
 
 ## Code Appendix
 
@@ -323,7 +331,7 @@ plot.map(TBdata$Risk[TBdata$Year==2014],n.levels=7,main="TB regional risk per 10
 
 ```
 This last one if for the temporal-spacial analysis 
-## TODO Get this graph for space-time
+
 
 ## Exploratory analyses
 
@@ -385,9 +393,8 @@ fit. As this suggests that our current model doesn't fit the data
 correctly and required an extension to our model as the Poisson GAM is
 not accounted for enough deviance as seen in the residuals.
 
-<!-- ## TODO better prepare the residuals and explain them if we have enough figures to show -->
+<!-- ## better prepare the residuals and explain them if we have enough figures to show -->
 
-<!-- ## TODO better prepare the residuals and explain them if we have enough figures to show -->
 
 Since the model is not accounting for enough of the variance we will
 check if there is a significant difference between the variance and the
