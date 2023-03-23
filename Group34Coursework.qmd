@@ -143,6 +143,8 @@ independently from the mean.
 Let the model be : <br>
 $$\log(\mu_i) = \beta_0 + f_1(x_{i1}) + f_2(x_{i2}) + \ldots + f_k(x_{ik}) + \log(\phi) + \log(y_i+r_i)$$
 
+$$ Log(\lambda_i) = offset(log(Population_i)) + f_1(Indigenous_i) + f_2(Illiteracy_i) + \\f_3(Urbanisation_i) + f_4(Density_i) + f_5(Poverty_i) + f_6(PoorSanitation_i) +\\ f_7(Unemployment_i) + f_8(Timeliness_i) + f_9(Year_i) + f_{10}(Year_i, lon_i) + \\ f_{11}(lat_i,Year_i),\\ {u_i} = E[TB_i] and TB_i \sim NB(r,p) $$
+
 Because of this, it is more flexible than
 the Poisson model, and as a result, it can fit data with a greater
 degree of fluctuation. A NB model was fitted to the data making use of
