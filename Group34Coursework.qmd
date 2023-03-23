@@ -232,19 +232,21 @@ First, lets discuss the spatial findings of our analysis.
 As we can see from the yearly graph, figure 4, the analysis shows that there is a gradual decrease of TB cases per capita from 2012 to 2013 at the national level.
 In contract from 2013 to 2014 the data displays very little decrease of TB risk on a national level.
 
-
-
- Secondly, our spatial analysis discovered that the risk of Tb increases the more you deviate from the geological center of Brazil, with the risk of Tb <!-- going from 3.6 to 4.8 --> increasing up to 33% in the outskirts and border of Brazil
+ Secondly, our spatial analysis discovered that the risk of Tb increases the more you deviate from the geological center of Brazil, with the risk of Tb <!-- going from 3.6 to 4.8 --> increasing up to 33% as we go from the center-east region of Brazil to its borders on west side including as such a big portion of the Amazonian region. However as it can be observed from the figure there is a much bigger increase in TB risk as we move horizontally then vertically.
 
 fig 5
 
-Thirdly, merging the 2 previous analysis into the spatio-temporal we can see a more significant decrease of cases in the geographical center of Brazil and the Amazonian outskirts in both years Where the costal regions have a some improvements from 2012 to 2013 but have either mantained or increased their TB risk from 2013 to 2014
+Thirdly, merging the 2 previous analysis into the spatio-temporal we can see a more significant decrease of cases in the geographical center of Brazil and the Amazonian outskirts in both years Where the coastal regions have a some improvements from 2012 to 2013 but have either maintained or increased their TB risk from 2013 to 2014
 
-fig 6
+Thirdly, merging the 2 previous analysis into the spatio-temporal we can see a more significant decrease of cases overall from 2012 to 2013 in all microregions.
+In the geographical center of Brazil and the Amazonian outskirts in both years Where the coastal regions have a some improvements from 2012 to 2013 but have either maintained or increased their TB risk from 2013 to 2014
+
+
+fig 6 and 7
 
 
 
-## TODO reference the temporal graph here
+## TODO reference the temporal and spatial graphs here
 
 
 
@@ -275,18 +277,13 @@ computing cost and complexity.
 
 ![QQ Plot](QQ.png)
 
-{figure label="fig:heatMap"} ![Correlation Matrix](HeatMap.png)
-{caption: This is the heatmap that we will remove and get the better
-ggpairs} {/figure}
-
-![Initial variable analysis](histogramExploratoryAnalysis.png)
 
 ![Temporal Analysis of risk of TB per Year - fig 4](Temporal.png)
 ![Spatial Analysis of risk of TB per Year per region -fig 5](Spatial.png)
+![Temporal-Spatial Analysis of risk of TB per 100000 per Year per region -fig 6](SpatialTemporal.png)
 
-
-
-![Temporal-Spatial Analysis of risk of TB per 100000 per Year per region -fig 6](TemporalSpatial.png)
+if we have a spare 
+![Temporal-Spatial Analysis of risk of TB per 100000 per Year per region -fig 7](TemporalSpatial.png)
 
 ## Code Appendix
 
@@ -493,6 +490,25 @@ par(mfrow= c(1,2))
 
 qq.gam(poisson_model, main = 'Q-Q Plot for Poisson Model')
 qq.gam(nb_model, main = 'Q-Q Plot for Negative Binomial Model')
+```
+Just the space and time graphs needed
+```{r}
+
+par(mfrow= c(1,2))
+
+plot(nb_model, shade=T, rug = TRUE, residuals = TRUE,scheme=1,
+pch = 1, cex = 0.5)
+
+par(mfrow = c(1, 1))
+
+par(mfrow = c(1, 2))
+
+# Plot the last two plots of the model together
+plot(nb_model, which = c(10, 11), shade = TRUE, rug = TRUE, residuals = TRUE,
+     scheme = 1, pch = 1, cex = 0.5)
+
+# Reset the plotting layout to 1 row and 1 column
+par(mfrow = c(1, 1))
 ```
 
 ##spatial graph does not render automaticall have to be added manually
