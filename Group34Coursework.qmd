@@ -236,8 +236,11 @@ In contract from 2013 to 2014 the data displays very little decrease of TB risk 
 
  Secondly, our spatial analysis discovered that the risk of Tb increases the more you deviate from the geological center of Brazil, with the risk of Tb <!-- going from 3.6 to 4.8 --> increasing up to 33% in the outskirts and border of Brazil
 
+fig 5
 
-Thirdly, merging the 2 previous analysis into the spatio-temporal 
+Thirdly, merging the 2 previous analysis into the spatio-temporal we can see a more significant decrease of cases in the geographical center of Brazil and the Amazonian outskirts in both years Where the costal regions have a some improvements from 2012 to 2013 but have either mantained or increased their TB risk from 2013 to 2014
+
+fig 6
 
 
 
