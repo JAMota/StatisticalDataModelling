@@ -254,14 +254,14 @@ computing cost and complexity.
 
 ![QQ Plot](QQ.png){#fig-QQ-plot}
 
-![Temporal Analysis of risk of TB per Year - fig 4](Temporal.png){#fig-TemporalAnal}
+![Temporal Analysis of risk of TB per Year](Temporal.png){#fig-TemporalAnal}
 
-![Spatial Analysis of risk of TB per Year per region -fig 5](Spatial.png){#fig-SpatialAnal}
+![Spatial Analysis of risk of TB per Year per region](Spatial.png){#fig-SpatialAnal}
 
-![Temporal-Spatial Analysis of risk of TB per 100000 per Year per region -fig 6](SpatialTemporal.png){#fig-SpatialTemporalAnal}
+![Temporal-Spatial Analysis of risk of TB per 100000 per Year per region](SpatialTemporal.png){#fig-SpatialTemporalAnal}
 
 if we have a spare 
-![Temporal-Spatial Analysis of risk of TB per 100000 per Year per region -fig 7](TemporalSpatial.png){#fig-Brazil}
+![Temporal-Spatial Analysis of risk of TB per 100000 per Year per region](TemporalSpatial.png){#fig-Brazil}
 
 ## Code Appendix
 
