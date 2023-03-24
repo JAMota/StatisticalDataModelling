@@ -252,7 +252,7 @@ computing cost and complexity.
 
 ![Brazil TB exploratory Analysis](Exploration.png){#fig-Analysis}
 
-![QQ Plot](QQ.png){#fig-QQ-plot}
+![QQ-Plot of our distributions](QQ-plotDouble.png){#fig-QQ-plot}
 
 ![Temporal Analysis of risk of TB per Year](Temporal.png){#fig-TemporalAnal}
 
@@ -326,12 +326,22 @@ ggpairs(TBdata[ ,vars])
 
 ```{r}
 # INSERT THIS AS SUMMARY TABLE AS TABLE-1
+# summary_table <- summary(TBdata)
+# # Convert the summary table to a LaTeX table using the xtable() function
+# latex_table <- xtable(summary_table)
+# 
+# # Print the LaTeX table to the console
+# print(latex_table)
+
+
+# INSERT THIS AS SUMMARY TABLE AS TABLE-1
 summary_table <- summary(TBdata)
+
 # Convert the summary table to a LaTeX table using the xtable() function
 latex_table <- xtable(summary_table)
 
-# Print the LaTeX table to the console
-print(latex_table)
+# Print the LaTeX table in landscape orientation
+print(latex_table, landscape = TRUE)
 ```
 
 As we can see from the matrix, the variable that is the most correlated
@@ -467,6 +477,8 @@ par(mfrow= c(1,2))
 
 qq.gam(poisson_model, main = 'Q-Q Plot for Poisson Model')
 qq.gam(nb_model, main = 'Q-Q Plot for Negative Binomial Model')
+
+
 ```
 Just the space and time graphs needed
 ```{r, eval=FALSE}
