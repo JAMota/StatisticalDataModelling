@@ -75,6 +75,8 @@ tuberculosis in relation to the total population.
 
 @fig-Analysis
 
+@fig-Table
+
 When developing statistical models, there is a trade-off between interpretability and flexibility. Linear models are often preferred due to their simplicity and ease of interpretation, but they may not accurately represent complex non-linear relationships in the data, such as in the case of tuberculosis data. On the other hand, machine learning models like neural networks or boosted trees can provide accurate predictions but are difficult to interpret and require a large amount of data. As a middle ground, generalized additive models (GAMs) were chosen as the preferred framework for analysis in this case. GAMs provide a balance between interpretability and flexibility, making them a suitable choice for this analysis.
 
 @fig-Brazil
@@ -134,7 +136,7 @@ following model after making adjustments to the choice of rank for each
 of our smooth terms (covariates), until we were certain that they were
 not too low and edf was not too similar to k'.
 
-INSERT BOTH QQ PLOT HERE, FIGURE -2 at the last of the code.
+@fig-QQ-plot
 
 ## Model Fitting and Results:
 
@@ -223,7 +225,7 @@ outskirts in both years Where the coastal regions have a some
 improvements from 2012 to 2013 but have either maintained or increased
 their TB risk from 2013 to 2014
 
-@fig-SpatialTemporalAnal and 7
+@fig-SpatialTemporalAnal 
 
 ## Conclusion:
 
@@ -252,16 +254,22 @@ computing cost and complexity.
 
 ![Brazil TB exploratory Analysis](Exploration.png){#fig-Analysis}
 
+![Table of summaries of the variables](table.png){#fig-Table}
+
+
+![Temporal-Spatial Analysis of risk of TB per 100000 per Year per region](TemporalSpatial.png){#fig-Brazil}
+
 ![QQ-Plot of our distributions](QQ-plotDouble.png){#fig-QQ-plot}
 
 ![Temporal Analysis of risk of TB per Year](Temporal.png){#fig-TemporalAnal}
+
 
 ![Spatial Analysis of risk of TB per Year per region](Spatial.png){#fig-SpatialAnal}
 
 ![Temporal-Spatial Analysis of risk of TB per 100000 per Year per region](SpatialTemporal.png){#fig-SpatialTemporalAnal}
 
-if we have a spare 
-![Temporal-Spatial Analysis of risk of TB per 100000 per Year per region](TemporalSpatial.png){#fig-Brazil}
+
+
 
 ## Code Appendix
 
@@ -275,6 +283,7 @@ library(mgcv)
 library(ggplot2)
 library(GGally)
 library(xtable)
+library(kableExtra)
 
 load("C:/AppliedDataScienceAndStatistics/StatisticalDataModelling/datasets_project.RData")
 
@@ -342,6 +351,11 @@ latex_table <- xtable(summary_table)
 
 # Print the LaTeX table in landscape orientation
 print(latex_table, landscape = TRUE)
+
+
+kable(summary_table, 
+      caption = "Summary of TBdata", 
+      align = "c")
 ```
 
 As we can see from the matrix, the variable that is the most correlated

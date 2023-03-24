@@ -29,6 +29,7 @@ code like this:
 {{< pagebreak >}}
 
 
+
 ## Introduction:
 
 Tuberculosis (TB) is a bacterial disease that primarily affects the
@@ -69,11 +70,12 @@ This is the primary reason why we need to use a formal model to
 investigate the impact of our covariates on the incidence of
 tuberculosis in relation to the total population.
 
-INSERT PAIR PLOT -1 AND SUMMARY-1 TABLE HERE.
+@fig-Analysis
+
+@fig-Table
 
 When developing statistical models, there is a trade-off between interpretability and flexibility. Linear models are often preferred due to their simplicity and ease of interpretation, but they may not accurately represent complex non-linear relationships in the data, such as in the case of tuberculosis data. On the other hand, machine learning models like neural networks or boosted trees can provide accurate predictions but are difficult to interpret and require a large amount of data. As a middle ground, generalized additive models (GAMs) were chosen as the preferred framework for analysis in this case. GAMs provide a balance between interpretability and flexibility, making them a suitable choice for this analysis.
 
-INSERT BRAZIL MAP HERE - fig 7.
 @fig-Brazil
 
 ## Model Selection:
@@ -131,7 +133,7 @@ following model after making adjustments to the choice of rank for each
 of our smooth terms (covariates), until we were certain that they were
 not too low and edf was not too similar to k'.
 
-INSERT BOTH QQ PLOT HERE, FIGURE -2 at the last of the code.
+@fig-QQ-plot
 
 ## Model Fitting and Results:
 
@@ -212,11 +214,6 @@ we move horizontally then vertically.
 
 @fig-SpatialAnal
 
-Thirdly, merging the 2 previous analysis into the spatio-temporal we can
-see a more significant decrease of cases in the geographical center of
-Brazil and the Amazonian outskirts in both years Where the coastal
-regions have a some improvements from 2012 to 2013 but have either
-maintained or increased their TB risk from 2013 to 2014
 
 Thirdly, merging the 2 previous analysis into the spatio-temporal we can
 see a more significant decrease of cases overall from 2012 to 2013 in
@@ -225,7 +222,7 @@ outskirts in both years Where the coastal regions have a some
 improvements from 2012 to 2013 but have either maintained or increased
 their TB risk from 2013 to 2014
 
-@fig-SpatialTemporalAnal and 7
+@fig-SpatialTemporalAnal 
 
 ## Conclusion:
 
@@ -250,38 +247,26 @@ associated with the application of a generalised additive model (GAM),
 including the risk that our model overfits our data, as well as its high
 computing cost and complexity.
 
-
 ## Figures
 
-![QQ Plot](QQ.png){#fig-QQ-plot}
 
-![Temporal Analysis of risk of TB per Year - fig 4](Temporal.png){#fig-TemporalAnal}
+![Brazil TB exploratory Analysis](Exploration.png){#fig-Analysis}
 
-![Spatial Analysis of risk of TB per Year per region -fig 5](Spatial.png){#fig-SpatialAnal}
-
-![Temporal-Spatial Analysis of risk of TB per 100000 per Year per region -fig 6](SpatialTemporal.png){#fig-SpatialTemporalAnal}
-
-if we have a spare 
-![Temporal-Spatial Analysis of risk of TB per 100000 per Year per region -fig 7](TemporalSpatial.png)
+![Table of summaries of the variables](table.png){#fig-Table}
 
 
-\begin{table}[ht]
-\centering
-\begin{tabular}{rlllllllllllllll}
-  \hline
- &   Indigenous &   Illiteracy &  Urbanisation &    Density &    Poverty & Poor\_Sanitation &  Unemployment &   Timeliness &      Year &       TB &   Population &     Region &      lon &      lat &      Risk \\ 
-  \hline
-X & Min.   : 0.01034   & Min.   : 2.336   & Min.   :22.34   & Min.   :0.4223   & Min.   : 5.923   & Min.   : 0.0466   & Min.   : 1.128   & Min.   : 0.00   & Min.   :2012   & Min.   :   0   & Min.   :   23966   & Min.   :11001   & Min.   :-72.86   & Min.   :-32.865   & Min.   :  0.00   \\ 
-  X.1 & 1st Qu.: 0.06366   & 1st Qu.: 6.683   & 1st Qu.:58.45   & 1st Qu.:0.5166   & 1st Qu.:26.229   & 1st Qu.: 6.3903   & 1st Qu.: 5.145   & 1st Qu.:31.29   & 1st Qu.:2012   & 1st Qu.:  17   & 1st Qu.:  105054   & 1st Qu.:24007   & 1st Qu.:-50.95   & 1st Qu.:-22.278   & 1st Qu.: 13.52   \\ 
-  X.2 & Median : 0.10577   & Median :11.516   & Median :72.66   & Median :0.5840   & Median :42.603   & Median :13.9129   & Median : 6.782   & Median :48.36   & Median :2013   & Median :  35   & Median :  180423   & Median :31028   & Median :-46.31   & Median :-15.889   & Median : 20.11   \\ 
-  X.3 & Mean   : 0.84307   & Mean   :14.802   & Mean   :71.96   & Mean   :0.6212   & Mean   :44.371   & Mean   :16.4490   & Mean   : 6.930   & Mean   :47.67   & Mean   :2013   & Mean   : 125   & Mean   :  357768   & Mean   :31329   & Mean   :-46.42   & Mean   :-15.240   & Mean   : 23.54   \\ 
-  X.4 & 3rd Qu.: 0.23973   & 3rd Qu.:22.844   & 3rd Qu.:86.16   & 3rd Qu.:0.6585   & 3rd Qu.:63.907   & 3rd Qu.:24.9953   & 3rd Qu.: 8.405   & 3rd Qu.:62.58   & 3rd Qu.:2014   & 3rd Qu.:  76   & 3rd Qu.:  315440   & 3rd Qu.:41007   & 3rd Qu.:-40.64   & 3rd Qu.: -7.380   & 3rd Qu.: 28.94   \\ 
-  X.5 & Max.   :50.64623   & Max.   :41.137   & Max.   :99.93   & Max.   :1.6751   & Max.   :77.883   & Max.   :58.4328   & Max.   :20.438   & Max.   :96.69   & Max.   :2014   & Max.   :9097   & Max.   :14597964   & Max.   :53001   & Max.   :-34.95   & Max.   :  3.486   & Max.   :117.73   \\ 
-   \hline
-\end{tabular}
-\end{table}
+![Temporal-Spatial Analysis of risk of TB per 100000 per Year per region](TemporalSpatial.png){#fig-Brazil}
+
+![QQ-Plot of our distributions](QQ-plotDouble.png){#fig-QQ-plot}
+
+![Temporal Analysis of risk of TB per Year](Temporal.png){#fig-TemporalAnal}
+
+<!-- ## TODO FIX this -->
+![Spatial Analysis of risk of TB per Year per region](MultiplesSpatial.png){#fig-SpatialAnal}
+
+![Temporal-Spatial Analysis of risk of TB per 100000 per Year per region](SpatialTemporal.png){#fig-SpatialTemporalAnal}
 
 
 
 
-
+## Code Appendix
