@@ -454,7 +454,7 @@ random errors and not a uncounted pattern in the model.
 
 
 
-```{r}
+```{r, echo=FALSE, eval=FALSE}
 plot(nb_model, shade=T, rug = TRUE, residuals = TRUE,
 pch = 1, scheme =1,  cex = 0.5)
 ```
@@ -477,7 +477,7 @@ the model adequately capture the variability of the the response
 variable.
 
 
-```{r}
+```{r, echo=FALSE, eval=FALSE}
 plot(nb_model, shade=T, rug = TRUE, residuals = TRUE,scheme=1,
 pch = 1, cex = 0.5)
 ```
@@ -498,7 +498,7 @@ qq.gam(nb_model, main = 'Q-Q Plot for Negative Binomial Model')
 
 ```
 Just the space and time graphs needed
-```{r, eval=FALSE}
+```{r, eval=FALSE, echo=FALSE}
 
 par(mfrow= c(1,3))
 
