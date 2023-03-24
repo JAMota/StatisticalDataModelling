@@ -37,7 +37,6 @@ code like this:
 {{< pagebreak >}}
 
 
-
 ## Introduction:
 
 Tuberculosis (TB) is a bacterial disease that primarily affects the
@@ -211,27 +210,21 @@ is a gradual decrease of TB cases per capita from 2012 to 2013 at the
 national level. In contract from 2013 to 2014 the data displays very
 little decrease of TB risk on a national level.
 
-Secondly, our spatial analysis discovered that the risk of Tb increases
-the more you deviate from the geological center of Brazil, with the risk
-of Tb <!-- going from 3.6 to 4.8 --> increasing up to 33% as we go from
-the center-east region of Brazil to its borders on west side including
-as such a big portion of the Amazonian region. However as it can be
-observed from the figure there is a much bigger increase in TB risk as
-we move horizontally then vertically.
 
-@fig-SpatialAnal
+Secondly, our spatial analysis discovered that the risk of Tb increases
+the more you deviate from the geological Eastern central region of Brazil, with the risk
+of Tb <!-- going from 3.6 to 4.8 --> increasing up to 33% at its maximum on the south-western border region of Brazil. This increase in Tb risk is much more prolonged longitude wise mainly due to the center of lower TB risk is nearly centrally located in latitude, but skewed significantly to the east in longitude. From the @fig-SpatialAnal we can also observed the risk of TB increases quicker on the latitude scale then on the longitude scale. <!-- which becomes even more evident when we consider the scalling of the graph -->
 
 
 Thirdly, merging the 2 previous analysis into the spatio-temporal we can
 see a more significant decrease of cases overall from 2012 to 2013 in
-all microregions. In the geographical center of Brazil and the Amazonian
-outskirts in both years Where the coastal regions have a some
-improvements from 2012 to 2013 but have either maintained or increased
-their TB risk from 2013 to 2014
+all microregions which is very evident on the @fig-Brazil. In the geographical center of Brazil and the Amazonian outskirts in both years where the coastal regions have a some
+improvements from 2012 to 2013 but the risk of TB was either nearly unchanged or did increase from 2013 to 2014. 
 
-@fig-SpatialTemporalAnal 
+Looking at the @fig-SpatialTemporalAnal we can identify that regions with the lowest longitude and latitude have significantly higher TB risk, however regions with longitude bigger than the center of the lowest risk demonstrate a risk level that is quite similar to that of the low-risk area. Regions with latitude bigger than the lowest center have a gradual increase in TB risk.
+These effects have remained stable during the 3 years analysed
 
-@fig-Brazil
+
 
 ## Conclusion:
 
