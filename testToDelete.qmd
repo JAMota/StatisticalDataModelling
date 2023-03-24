@@ -37,6 +37,7 @@ code like this:
 {{< pagebreak >}}
 
 
+
 ## Introduction:
 
 Tuberculosis (TB) is a bacterial disease that primarily affects the
@@ -82,7 +83,6 @@ tuberculosis in relation to the total population.
 
 When developing statistical models, there is a trade-off between interpretability and flexibility. Linear models are often preferred due to their simplicity and ease of interpretation, but they may not accurately represent complex non-linear relationships in the data, such as in the case of tuberculosis data. On the other hand, machine learning models like neural networks or boosted trees can provide accurate predictions but are difficult to interpret and require a large amount of data. As a middle ground, generalized additive models (GAMs) were chosen as the preferred framework for analysis in this case. GAMs provide a balance between interpretability and flexibility, making them a suitable choice for this analysis.
 
-@fig-Brazil
 
 ## Model Selection:
 
@@ -97,7 +97,7 @@ regression. While we were trying to fit our model in R, it was necessary
 for us to include an offset for the log of the population. This provides
 us with the tuberculosis rate per capita:
 
-Let the model be : <br>
+We defined our model as : <br>
 $$ Log(\lambda_i) = offset(log(Population_i)) + f_1(Indigenous_i) + $$
 <br>
 $$ f_2(Illiteracy_i) + \\f_3(Urbanisation_i) + f_4(Density_i) + f_5(Poverty_i) + $$
@@ -110,7 +110,8 @@ $$ f_9(Year_i) + f_{10}(Year_i, lon_i) + \\ f_{11}(lat_i,Year_i), $$
 Confirming that our model was accurate was the next step in the process
 of developing our model. Unfortunately, a QQ-plot revealed that the
 quantiles in our data did not closely resemble what they would look like
-if they followed a theoretical poisson distribution. This was the
+if they followed a theoretical poisson distribution as it can be seen from @fig-QQ-plot.
+This was the
 conclusion that could be drawn from the plot. After calculating a
 Pearson estimate of our dispersion parameter to determine whether or not
 this lack of fit was due to over-dispersion, the results were
@@ -131,7 +132,7 @@ independently from the mean.
 Because of this, it is more flexible than the Poisson model, and as a
 result, it can fit data with a greater degree of fluctuation. A NB model
 was fitted to the data making use of the exact same specification as was
-used before. We can count ourselves fortunate that the QQ-plot5 for the
+used before. We can count ourselves fortunate that the QQ-plot as seen in @fig-QQ-plot for the
 revised model showed a good fit (the majority of the dots fell on the
 y=x line), and the estimate for the dispersion parameter was 1,133. The
 AIC was also reduced for our newly developed model. We arrived at the
@@ -139,7 +140,7 @@ following model after making adjustments to the choice of rank for each
 of our smooth terms (covariates), until we were certain that they were
 not too low and edf was not too similar to k'.
 
-@fig-QQ-plot
+
 
 ## Model Fitting and Results:
 
@@ -229,6 +230,8 @@ improvements from 2012 to 2013 but have either maintained or increased
 their TB risk from 2013 to 2014
 
 @fig-SpatialTemporalAnal 
+
+@fig-Brazil
 
 ## Conclusion:
 
