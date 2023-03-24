@@ -2,6 +2,10 @@
 title: "o teu pai de 4"
 format: pdf
 editor: visual
+crossref:
+  fig-title: Fig     # (default is "Figure")
+  fig-prefix: figure   # (default is "Figure")
+  chapters: true
 ---
 
 ## Quarto
@@ -28,6 +32,9 @@ code like this:
 
 {{< pagebreak >}}
 
+\listoffigures
+
+{{< pagebreak >}}
 
 
 ## Introduction:
@@ -62,7 +69,9 @@ out before attempting any type of formal statistical analysis or
 regression on the data. Several of the findings were unexpected, such as the
 observation that a lower degree of sanitation did not appear to be
 associated with a higher rate of tuberculosis cases. The same was true
-in regard to the levels of poverty. Nevertheless, the issue with
+in regard to the levels of poverty as it can been from @fig-Analysis and @fig-Table. 
+
+Nevertheless, the issue with
 attempting to infer statistical associations in such a straightforward
 manner is that we are unable to take into consideration the possibility
 of changes occurring in other variables for each of the data points.
@@ -70,9 +79,6 @@ This is the primary reason why we need to use a formal model to
 investigate the impact of our covariates on the incidence of
 tuberculosis in relation to the total population.
 
-@fig-Analysis
-
-@fig-Table
 
 When developing statistical models, there is a trade-off between interpretability and flexibility. Linear models are often preferred due to their simplicity and ease of interpretation, but they may not accurately represent complex non-linear relationships in the data, such as in the case of tuberculosis data. On the other hand, machine learning models like neural networks or boosted trees can provide accurate predictions but are difficult to interpret and require a large amount of data. As a middle ground, generalized additive models (GAMs) were chosen as the preferred framework for analysis in this case. GAMs provide a balance between interpretability and flexibility, making them a suitable choice for this analysis.
 
@@ -249,8 +255,7 @@ computing cost and complexity.
 
 ## Figures
 
-
-![Brazil TB exploratory Analysis](Exploration.png){#fig-Analysis}
+![Brazil TB 2012-2014 data exploratory Analysis](FullExploratoryAnalysis.png){#fig-Analysis}
 
 ![Table of summaries of the variables](table.png){#fig-Table}
 
@@ -261,12 +266,12 @@ computing cost and complexity.
 
 ![Temporal Analysis of risk of TB per Year](Temporal.png){#fig-TemporalAnal}
 
-<!-- ## TODO FIX this -->
-![Spatial Analysis of risk of TB per Year per region](MultiplesSpatial.png){#fig-SpatialAnal}
+
+![Spatial Analysis of risk of TB per Year per region](Spatial.png){#fig-SpatialAnal}
 
 ![Temporal-Spatial Analysis of risk of TB per 100000 per Year per region](SpatialTemporal.png){#fig-SpatialTemporalAnal}
 
 
 
-
 ## Code Appendix
+
